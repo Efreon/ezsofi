@@ -62,6 +62,21 @@ p   {
     font-size:18px;
     }
 
+
+hr{
+    border: none;
+    color: #000000;
+    overflow:visible;
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 1%;
+    }
+
+hr:after{
+        content: '---';
+        letter-spacing: 10px;
+}
+
 .definitions .container{
                         padding: 0 10% 0 10%;
 }
