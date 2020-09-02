@@ -1,0 +1,49 @@
+body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;    
+}
+
+h1  {
+    background-color: grey;
+    padding: 0 10%;
+    font-weight: normal;
+    height: 50px;
+    border: 1px solid black;
+    }
+
+h2  {
+    /*padding: 0 10%;*/
+    font-size: 24px;
+    font-weight: lighter;
+    }
+
+.new_post, .old_posts  {
+            padding: 0 10%;
+            }
+
+label   {
+        font-weight: bold;
+        }
+
+input   {
+        border: 1px solid black;
+        margin-top: 10px; 
+        display: inline-block;
+        overflow:visible;
+        }
+
+legend  {padding: 0;}
+
+.unique_post    {
+                border: 2px solid black;
+                padding: 0 10px;
+                margin: 0 0 10px 0;
+                }
+.unique_post h3 {
+                font-size: 24px;
+                padding: 0;
+                }
+
+.unique_post p  {font-weight: lighter;
+                
+}

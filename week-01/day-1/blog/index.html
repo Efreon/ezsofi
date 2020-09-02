@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="keywords" content="blog">
+        <meta name="description" content="personal blog">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <title > The Blog</title>  
+    </head>
+
+    <body>
+        
+        <h1>The Blog</h1>
+
+        <section class="new_post">
+            <h2>Add new post</h2>
+
+            <form action="" method="POST" class="add_post">
+                <fieldset>
+                    <legend>Title</legend>
+                    <input type="text" id="title" name="post_title" required
+                    minlength="4" maxlength="1500" size="25" placeholder="Lorem ipsum dolor sit amet">
+                </fieldset>
+
+                <fieldset>
+                    <legend>Content</legend>
+                    <textarea id="content" name="content" cols="150"></textarea>
+                </fieldset>
+                
+                <button type="submit">Submit</button>           
+            </form>
+        </section>
+
+        <section class="old_posts">
+            <h2>Posts</h2>
+            <article class="unique_post">
+                <h3>Lorem ipsum dolor sit amet</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non consectetur purus, ut porta nunc. Vivamus vitae mauris nec sem pulvinar sagittis sed vitae est. Nunc consequat hendrerit tortor, vitae bibendum ante feugiat vitae. Phasellus quis congue leo. Sed sapien quam, vestibulum nec ultricies ac, lacinia ut erat. Vestibulum scelerisque diam ac libero porttitor sagittis. Ut ultrices ultricies turpis vel ultricies.</p>
+            </article>
+
+            <article class="unique_post">
+                <h3>Lorem ipsum dolor sit amet</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non consectetur purus, ut porta nunc. Vivamus vitae mauris nec sem pulvinar sagittis sed vitae est. Nunc consequat hendrerit tortor, vitae bibendum ante feugiat vitae. Phasellus quis congue leo. Sed sapien quam, vestibulum nec ultricies ac, lacinia ut erat. Vestibulum scelerisque diam ac libero porttitor sagittis. Ut ultrices ultricies turpis vel ultricies.</p>
+            </article>
+        </section>
+
+    </body>
+</html>
