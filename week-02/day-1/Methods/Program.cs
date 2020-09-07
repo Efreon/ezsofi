@@ -110,13 +110,26 @@ namespace Methods
             //  should print: '[]'
 
             string[] stringArray = Array.ConvertAll(arrayCheck, ele => ele.ToString());
-            var indexNum = new int[] { };
+            string arrayFirst = stringArray[];
+
+            for (int i=0; i <= arrayFirst.Length; i++)
+            {
+                Console.WriteLine(arrayFirst[0]);
+            }
+            
+            /*var indexNum = new int[] { };
             for (int i=0; i <= stringArray.Length; i++ )
             {
-                for (int j=0; j <= stringArray[i].Length; j++ )
+                for (int j=0; j < stringArray[i].Length; j++)
                 {
-                    Console.WriteLine(stringArray[i]);
+
                 }
+            }*/
+
+            string testStr = "abc123";
+            for (int counter = 0; counter < testStr.Length; counter++)
+            {
+                Console.WriteLine(testStr[counter].ToString());
             }
 
         }
