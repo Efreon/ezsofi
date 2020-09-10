@@ -20,7 +20,7 @@ namespace DrawingApplication
             var canvas = this.Get<Canvas>("canvas");
             var foxDraw = new FoxDraw(canvas);
 
-            StarryNight(foxDraw);
+            FunctionToCenter(foxDraw);
         }
 
         private static Color RandomColor()
@@ -220,15 +220,14 @@ namespace DrawingApplication
 
         private void PurpleSteps3d(FoxDraw foxDraw)
         {
-            int startingX = 10;
-            int startingY = 10;
+            int startingPoints = 10;
             int sideSize = 10;
             for (int i = 0; i <= 10; i++)
             {
                 foxDraw.SetFillColor(Colors.Purple);
-                foxDraw.DrawRectangle(Math.Pow(i, 2)*startingX,  Math.Pow(i, 2)*startingX, sideSize+i*sideSize, sideSize+i*sideSize);
-            
-          }
+                foxDraw.DrawRectangle(startingPoints, startingPoints, i*sideSize, i*sideSize);
+                startingPoints = startingPoints +i * sideSize;
+            }
         }
 
         private void StarryNight(FoxDraw foxDraw)
@@ -250,6 +249,37 @@ namespace DrawingApplication
 
                 foxDraw.SetFillColor(Colors.LightGray);
                 foxDraw.DrawRectangle(randomStartingX, randomStartingY, sideSize, sideSize);
+            }
+        }
+        private void FunctionToCenter (FoxDraw foxDraw)
+        {
+            // Create a function that draws a single line and takes 3 parameters:
+            // the x and y coordinates of the line's starting point and the
+            // foxDraw and draws a line from that point to the center of the
+            // canvas.
+            // Fill the canvas with lines from the edges, every 20 px, to the center.
+
+            for (int x = 0; x <= 800; x+=20)
+            {   
+                if(x==0)
+                {
+                    for (int y = 0; y <= 800; y+=20)
+                    {
+                        foxDraw.DrawLine(x, y, 400, 400);
+                    }
+                }
+                if (x>0 && x<800)
+                {
+                    foxDraw.DrawLine(x, 0, 400, 400);
+                    foxDraw.DrawLine(x, 800, 400, 400);
+                }
+                if (x==800)
+                {
+                    for (int y = 800; y >= 0; y-=20)
+                    {
+                        foxDraw.DrawLine(x, y, 400, 400);
+                    }
+                }
             }
         }
         private void InitializeComponent()
