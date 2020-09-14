@@ -8,7 +8,7 @@ namespace Recursion_Workshop
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(SumDigits(5050));
+            Console.WriteLine(Power(5,3));
         }
 
         public static long NumberAdder(int n)
@@ -31,6 +31,22 @@ namespace Recursion_Workshop
             else
             {
                 return (n % 10 + SumDigits(n / 10));
+            }
+        }
+
+        public static long Power(int baseNum, int powerNum)
+        {
+            if(baseNum == 1)
+            {
+                return 1;
+            }
+            else if (powerNum == 1)
+            {
+                return baseNum;
+            }
+            else
+            {
+                return baseNum * Power(baseNum, powerNum-1);
             }
         }
     }
