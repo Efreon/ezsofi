@@ -8,7 +8,7 @@ namespace Recursion_Workshop
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Power(5,3));
+            Console.WriteLine(GreatestCommonDivisor(192,270));
         }
 
         public static long NumberAdder(int n)
@@ -47,6 +47,21 @@ namespace Recursion_Workshop
             else
             {
                 return baseNum * Power(baseNum, powerNum-1);
+            }
+        }
+
+        public static int GreatestCommonDivisor (int num1, int num2)
+        {
+            int higherNum = Math.Max(num1, num2);
+            int lowerNum = Math.Min(num1, num2);
+            if (higherNum == 0 || lowerNum == 0)
+            {
+                return higherNum;
+            }
+            else
+            {
+                int remainder = higherNum % lowerNum;
+                return GreatestCommonDivisor(lowerNum, remainder);
             }
         }
     }
