@@ -8,8 +8,8 @@ namespace Recursion_Workshop
     {
         static void Main(string[] args)
         {
-            string sentence = "axdfaxdasdxxxx";
-            Console.WriteLine(Strings(sentence));
+            string sentence = "acxddsa";
+            Console.WriteLine(Strings2(sentence));
         }
 
         public static long NumberAdder(int n)
@@ -144,12 +144,26 @@ namespace Recursion_Workshop
             {
                 if (sentence[sentence.Length-1] == 'x')
                 {
-                    return "y" + Strings(sentence.Substring(0, sentence.Length - 1));
+                    return "y" + Strings2(sentence.Substring(0, sentence.Length-1));
                 }
                 else
                 {
-                    return sentence[sentence.Length - 1] + Strings(sentence.Substring(0, sentence.Length - 1));
+                    return sentence[sentence.Length - 1] + Strings2(sentence.Substring(0, sentence.Length-1));
                 }
+            }
+        }
+
+        public static string Strings3(string sentence)
+        {
+            // Given a string, compute recursively a new string 
+            // where all the adjacent chars are now separated by a *
+            if (sentence.Length == 1)
+            {
+                return sentence;
+            }
+            else
+            {
+                return sentence[0] + "*" + Strings(sentence.Substring(0, sentence.Length - 1));
             }
         }
     }
