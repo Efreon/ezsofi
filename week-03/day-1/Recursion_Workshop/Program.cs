@@ -8,7 +8,8 @@ namespace Recursion_Workshop
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Bunnies2(10));
+            string sentence = "axc";
+            Console.WriteLine(Strings(sentence));
         }
 
         public static long NumberAdder(int n)
@@ -98,6 +99,33 @@ namespace Recursion_Workshop
                 else
                 {
                     return 2 + Bunnies2(bunnies - 1);
+                }
+            }
+        }
+
+        public static string Strings(string sentence)
+        {
+            // Given a string, compute recursively (no loops) a new string 
+            // where all the lowercase 'x' chars have been changed to 'y' chars.
+
+            if (sentence.Length == 1 && sentence[0] != 'x')
+            {
+                return sentence;
+                // check if the last character is x
+            }
+            else if (sentence.Length == 1 && sentence[0] == 'x') 
+            {
+                return "y";
+            }
+            else
+            {
+                if (sentence[0] == 'x')
+                {
+                    return "y" +Strings(sentence.Substring(1, sentence.Length-1));
+                }
+                else
+                {
+                    return sentence[0] + Strings(sentence.Substring(1, sentence.Length-1));
                 }
             }
         }
