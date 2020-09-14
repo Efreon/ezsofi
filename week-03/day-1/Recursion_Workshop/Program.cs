@@ -9,7 +9,7 @@ namespace Recursion_Workshop
         static void Main(string[] args)
         {
             string sentence = "acxddsa";
-            Console.WriteLine(Strings2(sentence));
+            Console.WriteLine(Strings3(sentence));
         }
 
         public static long NumberAdder(int n)
@@ -163,7 +163,7 @@ namespace Recursion_Workshop
             }
             else
             {
-                return sentence[0] + "*" + Strings(sentence.Substring(0, sentence.Length - 1));
+                return sentence[0] + "*" + Strings3(sentence.Substring(1, sentence.Length - 1));
             }
         }
     }
