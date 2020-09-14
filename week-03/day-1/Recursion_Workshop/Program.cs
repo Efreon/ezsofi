@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Recursion_Workshop
 {
@@ -6,7 +8,7 @@ namespace Recursion_Workshop
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(NumberAdder(4));
+            Console.WriteLine(SumDigits(5050));
         }
 
         public static long NumberAdder(int n)
@@ -18,6 +20,17 @@ namespace Recursion_Workshop
             else
             {
                 return n + NumberAdder(n - 1);
+            }
+        }
+        public static int SumDigits(int n)
+        {
+            if (n == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return (n % 10 + SumDigits(n / 10));
             }
         }
     }
