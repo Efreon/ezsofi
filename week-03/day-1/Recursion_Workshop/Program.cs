@@ -8,7 +8,7 @@ namespace Recursion_Workshop
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(GreatestCommonDivisor(192,270));
+            Console.WriteLine(Bunnies(270));
         }
 
         public static long NumberAdder(int n)
@@ -62,6 +62,21 @@ namespace Recursion_Workshop
             {
                 int remainder = higherNum % lowerNum;
                 return GreatestCommonDivisor(lowerNum, remainder);
+            }
+        }
+
+        public static int Bunnies(int bunnies)
+        {
+            // We have a number of bunnies and each bunny has two big floppy ears. 
+            // We want to compute the total number of ears across all the bunnies recursively 
+            //(without loops or multiplication).
+            if (bunnies == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return 2 + Bunnies(bunnies - 1);
             }
         }
     }
