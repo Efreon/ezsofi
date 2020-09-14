@@ -8,8 +8,7 @@ namespace Recursion_Workshop
     {
         static void Main(string[] args)
         {
-            string sentence = "acxddsa";
-            Console.WriteLine(Strings3(sentence));
+            Console.WriteLine(Fibonacci(3));
         }
 
         public static long NumberAdder(int n)
@@ -164,6 +163,29 @@ namespace Recursion_Workshop
             else
             {
                 return sentence[0] + "*" + Strings3(sentence.Substring(1, sentence.Length - 1));
+            }
+        }
+        public static int Fibonacci(int n)
+        {
+            // The fibonacci sequence is a famous bit of mathematics, 
+            // and it happens to have a recursive definition. 
+            // The first two values in the sequence are 0 and 1 (essentially 2 base cases). 
+            // Each subsequent value is the sum of the previous two values, 
+            // so the whole sequence is: 0, 1, 1, 2, 3, 5, 8, 13, 21 and so on.
+            // Define a recursive fibonacci(n) method that returns the nth fibonacci number, 
+            // with n = 0 representing the start of the sequence.
+
+            if (n <= 0)
+            {
+                return 0;
+            }
+            else if (n==1)
+            {
+                return 1;
+            }
+            else
+            {
+                return Fibonacci(n - 1) + Fibonacci(n - 2);
             }
         }
     }
