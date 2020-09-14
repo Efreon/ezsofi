@@ -8,13 +8,13 @@ namespace Recursion_Workshop
     {
         static void Main(string[] args)
         {
-            string sentence = "axc";
+            string sentence = "axdfaxdasdxxxx";
             Console.WriteLine(Strings(sentence));
         }
 
         public static long NumberAdder(int n)
         {
-            if (n==1)
+            if (n == 1)
             {
                 return 1;
             }
@@ -37,7 +37,7 @@ namespace Recursion_Workshop
 
         public static long Power(int baseNum, int powerNum)
         {
-            if(baseNum == 1)
+            if (baseNum == 1)
             {
                 return 1;
             }
@@ -47,11 +47,11 @@ namespace Recursion_Workshop
             }
             else
             {
-                return baseNum * Power(baseNum, powerNum-1);
+                return baseNum * Power(baseNum, powerNum - 1);
             }
         }
 
-        public static int GreatestCommonDivisor (int num1, int num2)
+        public static int GreatestCommonDivisor(int num1, int num2)
         {
             int higherNum = Math.Max(num1, num2);
             int lowerNum = Math.Min(num1, num2);
@@ -89,7 +89,7 @@ namespace Recursion_Workshop
             if (bunnies == 0)
             {
                 return 0;
-            } 
+            }
             else
             {
                 if (bunnies % 2 == 0)
@@ -111,9 +111,8 @@ namespace Recursion_Workshop
             if (sentence.Length == 1 && sentence[0] != 'x')
             {
                 return sentence;
-                // check if the last character is x
             }
-            else if (sentence.Length == 1 && sentence[0] == 'x') 
+            else if (sentence.Length == 1 && sentence[0] == 'x')
             {
                 return "y";
             }
@@ -121,11 +120,35 @@ namespace Recursion_Workshop
             {
                 if (sentence[0] == 'x')
                 {
-                    return "y" +Strings(sentence.Substring(1, sentence.Length-1));
+                    return "y" + Strings(sentence.Substring(1, sentence.Length - 1));
                 }
                 else
                 {
-                    return sentence[0] + Strings(sentence.Substring(1, sentence.Length-1));
+                    return sentence[0] + Strings(sentence.Substring(1, sentence.Length - 1));
+                }
+            }
+        }
+
+        public static string Strings2(string sentence)
+        {
+            // Given a string, compute recursively a new string where all the 'x' chars have been removed.
+            if (sentence.Length == 1 && sentence[0] != 'x')
+            {
+                return sentence;
+            }
+            else if (sentence.Length == 1 && sentence[0] == 'x')
+            {
+                return "y";
+            }
+            else
+            {
+                if (sentence[sentence.Length-1] == 'x')
+                {
+                    return "y" + Strings(sentence.Substring(0, sentence.Length - 1));
+                }
+                else
+                {
+                    return sentence[sentence.Length - 1] + Strings(sentence.Substring(0, sentence.Length - 1));
                 }
             }
         }
