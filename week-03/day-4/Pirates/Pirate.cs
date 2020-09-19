@@ -12,6 +12,7 @@ namespace Pirates
         private bool isAlive;
         private bool isPassedOut;
         private bool hasParrot;
+        private bool isCaptain;
 
         // CONSTRUCTOR
         public Pirate(string _name)
@@ -21,22 +22,16 @@ namespace Pirates
             isAlive = true;
             isPassedOut = false;
             hasParrot = false;
+            isCaptain = false;
         }
 
         // PROPERTIES
-        public string Name 
-        {
-            get { return name; }
-            set { }
-        }
-        public int ToxicLevel 
-        { 
-            get { return toxicLevel; } 
-            set { }
-        }
-        public bool IsAlive;
-        public bool IsPassedOut;
-        public bool HasParrot;
+        public string Name {get { return name; } set { }}
+        public int ToxicLevel { get { return toxicLevel; } set { } }
+        public bool IsAlive { get { return isAlive; } set { } }
+        public bool IsPassedOut { get { return isPassedOut; } set { } }
+        public bool HasParrot { get { return hasParrot; } set { } }
+        public bool IsCaptain { get { return isCaptain; } set { } }
         // METHODS
         // DrinkSomeRum() - intoxicates the Pirate some
         public void DrinkSomeRum()
@@ -47,7 +42,6 @@ namespace Pirates
                 Die();
             }
         }
-
         // HowsItGoingMate() - when called, the Pirate replies
         // if DrinkSomeRun was called:-0 to 4 times, "Pour me anudder!"
         // else, "Arghh, I'ma Pirate. How d'ya d'ink its goin?", the pirate passes out and sleeps it off.
