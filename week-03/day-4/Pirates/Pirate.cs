@@ -6,25 +6,37 @@ namespace Pirates
 {
     public class Pirate
     {
-        // VARIABLES / PROPERTIES
-        string Name;
-        int ToxicLevel;
-        bool IsAlive;
-        bool IsPassedOut;
-        int HealtLevel;
-        bool HasParrot;
+        // VARIABLES
+        private string name;
+        private int toxicLevel;
+        private bool isAlive;
+        private bool isPassedOut;
+        private bool hasParrot;
 
         // CONSTRUCTOR
-        public Pirate(string name)
+        public Pirate(string _name)
         {
-            Name = name;
-            ToxicLevel = 0;
-            IsAlive = true;
-            IsPassedOut = false;
-            HealtLevel = 100;
-            HasParrot = false;
+            name = _name;
+            toxicLevel = 0;
+            isAlive = true;
+            isPassedOut = false;
+            hasParrot = false;
         }
 
+        // PROPERTIES
+        public string Name 
+        {
+            get { return name; }
+            set { }
+        }
+        public int ToxicLevel 
+        { 
+            get { return toxicLevel; } 
+            set { }
+        }
+        public bool IsAlive;
+        public bool IsPassedOut;
+        public bool HasParrot;
         // METHODS
         // DrinkSomeRum() - intoxicates the Pirate some
         public void DrinkSomeRum()
@@ -51,8 +63,7 @@ namespace Pirates
                 Console.WriteLine("Arghh, I'ma Pirate. How d'ya d'ink its goin?");
                 Sleep();
                 IsPassedOut = true;
-            }
-            
+            } 
         }
 
         public void Sleep()
@@ -87,7 +98,7 @@ namespace Pirates
                 {
                     IsPassedOut = true;
                     name.IsPassedOut = true;
-                    Console.WriteLine($"{Name} and {name.Name}is passed out");
+                    Console.WriteLine($"{Name} and {name.Name} is passed out");
                 }
             }
         }
