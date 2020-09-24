@@ -7,18 +7,14 @@ namespace TODOApplication
 {
     public class Task
     {
+        public string TaskName { get; protected set; }
+        public bool IsChecked { get; set; }
 
-        protected string taskName;
-        public string TaskName = "";
-
-        public Task(string taskName)
+        public Task(string taskName, bool isChecked)
         {
             TaskName = taskName;
+            IsChecked = isChecked;
         }
-        //public static void AddNewTask(string task)
-        //{
-        //    string filePath = @"d:\greenfox\ezsofi\week-04\day-4\TODOApplication\todos.txt";
-        //    File.AppendAllText(filePath, task + Environment.NewLine);
-        //}
     }
 }
+

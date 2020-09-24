@@ -29,7 +29,7 @@ namespace TODOApplication
                     }
                     else
                     {
-                        WeeklyTasks.AddNewTask(args[1]);
+                        WeeklyTasks.AddNewTask(new Task(args[1], false));
                     }
                 }
                 else if (args[0] == "-r")
@@ -47,6 +47,23 @@ namespace TODOApplication
                     {
                         Console.WriteLine("Unable to remove: index is not a number");
                     }
+                }
+                else if (args[0] == "-c")
+                {
+                    int ind;
+                    if (args.Length < 2)
+                    {
+                        Console.WriteLine("Unable to check: no index provided");
+                    }
+                    else if (Int32.TryParse(args[1], out ind))
+                    {
+                        WeeklyTasks.CheckTask(Int32.Parse(args[1]));
+                    }
+                    else
+                    {
+                        Console.WriteLine("Unable to check: index is not a number");
+                    }
+                    
                 }
                 else
                 {
