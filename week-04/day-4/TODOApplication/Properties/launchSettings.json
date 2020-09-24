@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "TODOApplication": {
+      "commandName": "Project",
+      "commandLineArgs": "-r 2",
+      "workingDirectory": "D:\\greenfox\\ezsofi\\week-04\\day-4\\TODOApplication"
+    }
+  }
+}
