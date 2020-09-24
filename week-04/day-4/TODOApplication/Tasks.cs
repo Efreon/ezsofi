@@ -54,14 +54,21 @@ namespace TODOApplication
         }
         public void RemoveTask(int number)
         {
-            Console.WriteLine($"You have removed an item from your todos: {MyTasks[number-1]}");
-            MyTasks.RemoveAt(number - 1);
+            if (number-1 > MyTasks.Count)
+            {
+                Console.WriteLine("Unable to remove: index is out of bound");
+            }
+            else
+            {
+                Console.WriteLine($"You have removed an item from your todos: {MyTasks[number - 1]}");
+                MyTasks.RemoveAt(number - 1);
 
-            string filePath = @"d:\greenfox\ezsofi\week-04\day-4\TODOApplication\todos.txt";
-            TextWriter tw = new StreamWriter(filePath);
-            foreach (String s in MyTasks)
-            tw.WriteLine(s);
-            tw.Close();
+                string filePath = @"d:\greenfox\ezsofi\week-04\day-4\TODOApplication\todos.txt";
+                TextWriter tw = new StreamWriter(filePath);
+                foreach (String s in MyTasks)
+                    tw.WriteLine(s);
+                tw.Close();
+            }
         }
     }
 }

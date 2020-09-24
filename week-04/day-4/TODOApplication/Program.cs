@@ -34,7 +34,20 @@ namespace TODOApplication
                 }
                 else if (args[0] == "-r")
                 {
-                    WeeklyTasks.RemoveTask(Int32.Parse(args[1]));
+                    int ind;
+                    if (args.Length < 2)
+                    {
+                        Console.WriteLine("Unable to remove: no index provided");
+                    }
+                    else if (Int32.TryParse(args[1], out ind))
+                    {
+                        WeeklyTasks.RemoveTask(Int32.Parse(args[1]));
+                    }
+                    else
+                    {
+                        Console.WriteLine("Unable to remove: index is not a number");
+                    }
+                    
                 }
             }
         }
