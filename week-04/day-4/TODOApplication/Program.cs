@@ -47,7 +47,11 @@ namespace TODOApplication
                     {
                         Console.WriteLine("Unable to remove: index is not a number");
                     }
-                    
+                }
+                else
+                {
+                    Console.WriteLine("Unsupported argument");
+                    PrintUsage();
                 }
             }
         }
