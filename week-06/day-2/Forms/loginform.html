@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="loginformstyles.css">
+    <body>
+        <div class="loginform">
+            <p>account login<p>
+                <div class="formgroup">
+                    <form action="https://httpbin.org/post" method="POST">
+                        <div class="username"> 
+                            <label>username</label>
+                            <input type="text" name="username" required>
+                        </div>
+                        <div class="password">
+                            <label>password</label>
+                            <input type="password" name="password" required>
+                            <i class="far fa-eye" id="togglePassword"></i>
+                        </div>
+                    </form>
+                </div>
+                <div class="button"> 
+                    <button type="submit">Login</button>
+                </div> 
+        </div>
+    </body>
+</html>
