@@ -10,10 +10,16 @@ namespace MyApplication.Controllers
     [Route("api")]
     public class RestController : Controller
     {
+        //[HttpGet("greeting")]
+        //public Greeting Greet()
+        //{
+        //    var greetObj = new Greeting(1, "Hello, World!");
+        //    return greetObj;
+        //}
         [HttpGet("greeting")]
-        public Greeting Greet()
+        public Greeting GreetName([FromQuery(Name = "name")] string name)
         {
-            var greetObj = new Greeting(1, "Hello, World!");
+            var greetObj = new Greeting(1, name);
             return greetObj;
         }
     }

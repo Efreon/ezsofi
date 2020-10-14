@@ -10,10 +10,15 @@ namespace MyApplication.Models
         public long Id { get; set; }
         public string Content { get; set; }
 
-        public Greeting(long id, string content)
+        //public Greeting(long id, string content)
+        //{
+        //    Id=id;
+        //    Content = $"Hello, World!";
+        //}
+        public Greeting(long id, string name)
         {
-            Id=id;
-            Content = content;
+            Id = id;
+            Content = $"Hello, {name}!";
         }
     }
 }
