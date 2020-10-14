@@ -9,16 +9,27 @@ namespace MyApplication.Models
     {
         public long Id { get; set; }
         public string Content { get; set; }
+        public static int callCounter;
 
+        public Greeting()
+        {
+        }
+        public Greeting(string name)
+        {
+            Id = callCounter;
+            Content = $"Hello, {name}!";
+            callCounter++;
+        }
         //public Greeting(long id, string content)
         //{
         //    Id=id;
         //    Content = $"Hello, World!";
         //}
-        public Greeting(long id, string name)
-        {
-            Id = id;
-            Content = $"Hello, {name}!";
-        }
+        //public Greeting(long id, string name)
+        //{
+        //    Id = id;
+        //    Content = $"Hello, {name}!";
+        //}
+
     }
 }
