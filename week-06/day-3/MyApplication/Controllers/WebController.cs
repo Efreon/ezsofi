@@ -10,15 +10,27 @@ namespace MyApplication.Controllers
     [Route("web")]
     public class WebController : Controller
     {
+        public static int callCounter = 1;
         [HttpGet("greeting")]
-        public IActionResult Greeting()
+        public IActionResult Greeting([FromQuery(Name = "name")] string name)
         {
             var greeting = new Greeting()
             {
-                Id = 1,
-                Content = "from the model"
+                Name = name,
+                Id = callCounter++
             };
             return View(greeting);
         }
+
+        //[HttpGet("greeting")]
+        //public IActionResult Greeting()
+        //{
+        //    var greeting = new Greeting()
+        //    {
+        //        Id = 1,
+        //        Content = "from the model"
+        //    };
+        //    return View(greeting);
+        //}
     }
 }

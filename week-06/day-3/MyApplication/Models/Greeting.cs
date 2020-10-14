@@ -10,15 +10,16 @@ namespace MyApplication.Models
         public long Id { get; set; }
         public string Content { get; set; }
         public static int callCounter;
+        public string Name { get; set; }
 
         public Greeting()
         {
         }
         public Greeting(string name)
         {
+            callCounter++;
             Id = callCounter;
             Content = $"Hello, {name}!";
-            callCounter++;
         }
         //public Greeting(long id, string content)
         //{
