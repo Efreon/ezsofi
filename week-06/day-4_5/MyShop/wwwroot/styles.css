@@ -1,0 +1,53 @@
+﻿body {
+    background: url(shopbackground.jpg) no-repeat center center fixed;
+    background-size:cover;
+}
+.topContainer {
+    display: flex;
+    padding: 10% 10% 2% 10%;
+}
+.title {
+    color: #A52149;
+    font-size: 24px;
+    text-align: left;
+    border-bottom: 2px solid #A52149;
+}
+.buttonContainer {
+    display: flex;
+    padding: 0% 10% 2% 10%;
+    justify-content: space-between;
+}
+.buttonContainer div {
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 16px;
+        background-color: #449596;
+        color: white;
+    }
+.buttonBox {
+    width:18%;
+    border-radius:8px;
+}
+.searchBoxContainer {
+    display: flex;
+    padding: 0% 10% 2% 10%;
+}
+searchBoxContainer div {
+    font-size: 16px;
+    background-color: #449596;
+}
+.searchBox {
+    /*padding: 0% 10% 2% 10%;*/
+    text-align: center;
+    font-size: 16px;
+    background-color: grey;
+}
+.tableContainer div {
+    display: flex;
+    padding: 0% 10% 2% 10%;
+
+}
+table {
+    background-color: #449596;
+    width:100%
+}
