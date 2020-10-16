@@ -1,11 +1,14 @@
 ﻿body {
     background: url(shopbackground.jpg) no-repeat center center fixed;
-    background-size:cover;
+    background-size: cover;
+    text-decoration: none;
 }
+
 .topContainer {
     display: flex;
     padding: 10% 10% 2% 10%;
 }
+
 .title {
     color: #A52149;
     font-size: 24px;
@@ -16,38 +19,83 @@
     display: flex;
     padding: 0% 10% 2% 10%;
     justify-content: space-between;
+    
 }
-.buttonContainer div {
+    .buttonContainer div {
         text-transform: uppercase;
         text-align: center;
-        font-size: 16px;
+        font-size: 20px;
         background-color: #449596;
+        box-shadow: 2px 2px 8px #A52149;
         color: white;
     }
 .buttonBox {
-    width:18%;
-    border-radius:8px;
+    width: 18%;
+    border-radius: 8px;
+}
+a {
+    text-decoration: none;
+    color: white;
 }
 .searchBoxContainer {
     display: flex;
-    padding: 0% 10% 2% 10%;
+    padding: 0% 10% 0% 10%;
 }
-searchBoxContainer div {
-    font-size: 16px;
+
+.searchBoxContainer div {
+    font-size: 20px;
     background-color: #449596;
+    box-shadow: 2px 2px 8px #A52149;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px #A52149;
 }
 .searchBox {
-    /*padding: 0% 10% 2% 10%;*/
     text-align: center;
-    font-size: 16px;
-    background-color: grey;
+    font-size: 20px;
+    background-color: #449596;
+    width: 100%;
 }
 .tableContainer div {
     display: flex;
     padding: 0% 10% 2% 10%;
-
+}
+.tableContainer table{
+    background-color: #449596;
+    width: 100%;
 }
 table {
-    background-color: #449596;
-    width:100%
+    box-shadow: 2px 2px 8px #A52149;
+    text-align: left;
+    border-radius: 8px;
+    color:white;
+    font-size:18px;
 }
+th {
+    vertical-align: central;
+    font-size: 20px;
+    color: #A52149;
+    border-collapse: collapse;
+}
+.singleValueContainer {
+    display: flex;
+    padding: 0% 10% 2% 10%;
+    justify-content: space-between;
+}
+.valueBox {
+    font-size: 20px;
+    background-color: #449596;
+    box-shadow: 2px 2px 8px #A52149;
+    color: white;
+    width: 100%;
+    border-radius: 8px;
+    padding:10%;
+    padding: 0% 2% 1% 2%;
+}
+    .valueBox p {
+        font-size: 20px;
+        color: #A52149;
+        font-weight:bold;
+    }
+
+

@@ -1,11 +1,7 @@
 ﻿@using MyShop.Models.ViewModels
 @model ItemViewModel
 @{
-    var itemName = Model.MyItem.Name;
-    var itemDescription = Model.MyItem.Description;
-    var itemPrice = Model.MyItem.Price;
-    var itemQuantityStock = Model.MyItem.QuantityOfStock;
-    var shopItems = Model.ShopItems;
+    var value = Model.ItemName;
 }
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -33,7 +29,7 @@
             <a href="/average-stock">average stock</a>
         </div>
         <div class="buttonBox">
-            <p>most expensive available</p>
+            <a href="/most-expensive">most expensive available</a>
         </div>
     </div>
     <div class="searchBoxContainer">
@@ -50,10 +46,12 @@
         </form>
     </div>
 
-    <div class="tableContainer">
-        <div class="tableBox">
-            @Html.Partial("_Table")
+    <div class="singleValueContainer">
+        <div class="valueBox">
+            <p>Most expensive product in the shop:</p>
+            @Model.ItemName
         </div>
     </div>
 </body>
 </html>
+

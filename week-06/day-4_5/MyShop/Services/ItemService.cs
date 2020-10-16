@@ -35,7 +35,6 @@ namespace MyShop.Services
                                                                  i.Split(";").ElementAt(1),
                                                                  Double.Parse(i.Split(";").ElementAt(2)),
                                                                  Double.Parse(i.Split(";").ElementAt(3))))
-
                                         .ToList();
         }
         // cheapest-first//
@@ -47,7 +46,6 @@ namespace MyShop.Services
                                                                  i.Split(";").ElementAt(1),
                                                                  Double.Parse(i.Split(";").ElementAt(2)),
                                                                  Double.Parse(i.Split(";").ElementAt(3))))
-                                        
                                         .ToList();
         }
         //contains-nike//
@@ -60,8 +58,23 @@ namespace MyShop.Services
                                                                  i.Split(";").ElementAt(1),
                                                                  Double.Parse(i.Split(";").ElementAt(2)),
                                                                  Double.Parse(i.Split(";").ElementAt(3))))
-
                                         .ToList();
+        }
+        //average-stock//
+        public double AverageStockPrice()
+        {
+            return
+            File.ReadAllLines(filePath).Where(i => Double.Parse(i.Split(";").ElementAt(3)) > 0)
+                                       .Select(i => Double.Parse(i.Split(";").ElementAt(3)))
+                                       .Average();
+        }
+        public string MostExpensive()
+        {
+            return
+            File.ReadAllLines(filePath).Where(i => Double.Parse(i.Split(";").ElementAt(2)) > 0)
+                                       .OrderByDescending(i => Double.Parse(i.Split(";").ElementAt(2)))
+                                       .Select(i => Double.Parse(i.Split(";").ElementAt(0)))
+                                       .ToString();
         }
         private void EnsureFileExists()
         {

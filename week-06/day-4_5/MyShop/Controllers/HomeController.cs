@@ -51,5 +51,19 @@ namespace MyShop.Controllers
             var model = new ItemViewModel(item, shopItems);
             return View("Items", model);
         }
+        [HttpGet("average-stock")]
+        public IActionResult AverageStockPrice()
+        {
+            var averageValue = service.AverageStockPrice();
+            var model = new ItemViewModel(averageValue);
+            return View("averageQuantity", model);
+        }
+        [HttpGet("most-expensive")]
+        public IActionResult MostExpensive()
+        {
+            var mostExpensive = service.AverageStockPrice();
+            var model = new ItemViewModel(mostExpensive);
+            return View("mostExpensive", model);
+        }
     }
 }

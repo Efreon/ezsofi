@@ -9,10 +9,20 @@ namespace MyShop.Models.ViewModels
     {
         public ShopItem MyItem { get; set; }
         public List<ShopItem> ShopItems { get; set; }
+        public double StockQtyAvg { get; set; }
+        public string ItemName { get; set; }
         public ItemViewModel(ShopItem myItem, List<ShopItem> shopItems)
         {
             MyItem = myItem;
             ShopItems = shopItems;
+        }
+        public ItemViewModel(double value)
+        {
+            StockQtyAvg = value;
+        }
+        public ItemViewModel(string name)
+        {
+            ItemName = name;
         }
     }
 }
