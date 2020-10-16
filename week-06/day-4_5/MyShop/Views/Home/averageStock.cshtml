@@ -1,0 +1,59 @@
+﻿@using MyShop.Models.ViewModels
+@model ItemViewModel
+@{
+    var itemName = Model.MyItem.Name;
+    var itemDescription = Model.MyItem.Description;
+    var itemPrice = Model.MyItem.Price;
+    var itemQuantityStock = Model.MyItem.QuantityOfStock;
+    var shopItems = Model.ShopItems;
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>MyShop</title>
+    <link href="~/styles.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="topContainer">
+        <div class="title">
+            <h1>My Shop</h1>
+        </div>
+    </div>
+    <div class="buttonContainer">
+        <div class="buttonBox">
+            <a href="/only-available">Only available</a>
+        </div>
+        <div class="buttonBox">
+            <a href="/cheapest-first">cheapest first</a>
+        </div>
+        <div class="buttonBox">
+            <a href="/contains-nike">contains nike</a>
+        </div>
+        <div class="buttonBox">
+            <a href="/average-stock">average stock</a>
+        </div>
+        <div class="buttonBox">
+            <p>most expensive available</p>
+        </div>
+    </div>
+    <div class="searchBoxContainer">
+        <form action="search" method="get">
+            <div class="SearchBox">
+                <label for="itemSearch">Search for: </label>
+            </div>
+            <div class="SearchBox">
+                <input type="text" id="itemSearch" name="search" placeholder="...something like nike" />
+            </div>
+            <div class="SearchBox">
+                <input type="submit" value="Search" />
+            </div>
+        </form>
+    </div>
+
+    <div class="tableContainer">
+        <div class="tableBox">
+            @Html.Partial("_Table")
+        </div>
+    </div>
+</body>
+</html>

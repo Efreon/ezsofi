@@ -16,6 +16,7 @@ namespace MyShop.Services
         
             EnsureFileExists();
         }
+        //all items//
         public List<ShopItem> ReadAllItemsFromFile()
         {
             return 
@@ -47,6 +48,19 @@ namespace MyShop.Services
                                                                  Double.Parse(i.Split(";").ElementAt(2)),
                                                                  Double.Parse(i.Split(";").ElementAt(3))))
                                         
+                                        .ToList();
+        }
+        //contains-nike//
+        public List<ShopItem> ItemsContainsNike()
+        {
+            return
+            File.ReadAllLines(filePath).Where(i => i.Split(";").ElementAt(0).ToLower().Contains("nike") || i.Split(";").ElementAt(1).ToLower().Contains("nike"))
+                                       .OrderBy(i => Double.Parse(i.Split(";").ElementAt(2)))
+                                       .Select(i => new ShopItem(i.Split(";").ElementAt(0),
+                                                                 i.Split(";").ElementAt(1),
+                                                                 Double.Parse(i.Split(";").ElementAt(2)),
+                                                                 Double.Parse(i.Split(";").ElementAt(3))))
+
                                         .ToList();
         }
         private void EnsureFileExists()

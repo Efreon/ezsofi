@@ -44,5 +44,12 @@ namespace MyShop.Controllers
             var model = new ItemViewModel(item, shopItems);
             return View("Items", model);
         }
+        [HttpGet("contains-nike")]
+        public IActionResult ItemsContainsNike(ShopItem item)
+        {
+            var shopItems = service.ItemsContainsNike();
+            var model = new ItemViewModel(item, shopItems);
+            return View("Items", model);
+        }
     }
 }

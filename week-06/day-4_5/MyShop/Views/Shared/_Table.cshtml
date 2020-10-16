@@ -7,24 +7,24 @@
     var itemQuantityStock = Model.MyItem.QuantityOfStock;
     var shopItems = Model.ShopItems;
 }
-        <table>
-            <thead>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Quantity of Stock </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in shopItems)
+            {
                 <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Quantity of Stock </th>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td>@item.Price</td>
+                    <td>@item.QuantityOfStock</td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in shopItems)
-                {
-                    <tr>
-                        <td>@item.Name</td>
-                        <td>@item.Description</td>
-                        <td>@item.Price</td>
-                        <td>@item.QuantityOfStock</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+            }
+    </tbody>
+</table>
