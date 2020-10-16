@@ -13,7 +13,6 @@ namespace MyShop.Models.ViewModels
         {
             MyItem = myItem;
             ShopItems = shopItems;
-
         }
     }
 }

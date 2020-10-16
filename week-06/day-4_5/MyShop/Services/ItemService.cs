@@ -16,10 +16,6 @@ namespace MyShop.Services
         
             EnsureFileExists();
         }
-        //public void SaveItemToFile(ShopItem item)
-        //{
-        //    File.AppendAllLines(filePath, new string[] { item.ToString() });
-        //}
         public List<ShopItem> ReadAllItemsFromFile()
         {
             return 
@@ -27,6 +23,30 @@ namespace MyShop.Services
                                                                  i.Split(";").ElementAt(1),
                                                                  Double.Parse(i.Split(";").ElementAt(2)), 
                                                                  Double.Parse(i.Split(";").ElementAt(3))))
+                                        .ToList();
+        }
+        // only-available// 
+        public List<ShopItem> ItemsOnlyAvailable()
+        {
+            return
+            File.ReadAllLines(filePath).Where(i => Double.Parse(i.Split(";").ElementAt(3)) >0)
+                                       .Select(i => new ShopItem(i.Split(";").ElementAt(0),
+                                                                 i.Split(";").ElementAt(1),
+                                                                 Double.Parse(i.Split(";").ElementAt(2)),
+                                                                 Double.Parse(i.Split(";").ElementAt(3))))
+
+                                        .ToList();
+        }
+        // cheapest-first//
+        public List<ShopItem> ItemsSortedPrice()
+        {
+            return
+            File.ReadAllLines(filePath).OrderBy(i => Double.Parse(i.Split(";").ElementAt(2)))
+                                       .Select(i => new ShopItem(i.Split(";").ElementAt(0),
+                                                                 i.Split(";").ElementAt(1),
+                                                                 Double.Parse(i.Split(";").ElementAt(2)),
+                                                                 Double.Parse(i.Split(";").ElementAt(3))))
+                                        
                                         .ToList();
         }
         private void EnsureFileExists()

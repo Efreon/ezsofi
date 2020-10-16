@@ -1,0 +1,30 @@
+﻿@using MyShop.Models.ViewModels
+@model ItemViewModel
+@{
+    var itemName = Model.MyItem.Name;
+    var itemDescription = Model.MyItem.Description;
+    var itemPrice = Model.MyItem.Price;
+    var itemQuantityStock = Model.MyItem.QuantityOfStock;
+    var shopItems = Model.ShopItems;
+}
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Quantity of Stock </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in shopItems)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Description</td>
+                        <td>@item.Price</td>
+                        <td>@item.QuantityOfStock</td>
+                    </tr>
+                }
+            </tbody>
+        </table>

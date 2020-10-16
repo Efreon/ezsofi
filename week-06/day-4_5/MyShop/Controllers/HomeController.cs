@@ -22,18 +22,27 @@ namespace MyShop.Controllers
         {
             return "Hello World";
         }
-        // [HttpGet("items")]
-        [HttpGet("")]
+ 
+        [HttpGet("items")]
         public IActionResult Items(ShopItem item)
         {
             var shopItems = service.ReadAllItemsFromFile();
             var model = new ItemViewModel(item, shopItems);
             return View(model);
         }
-        //[HttpPost("item")]
-        //public IActionResult CreatItem(ShopItem item)
-        //{
-        //    return RedirectToAction("Items", item);
-        //}
+        [HttpGet("cheapest-first")]
+        public IActionResult ItemsSortedCheapest(ShopItem item)
+        {
+            var shopItems = service.ItemsSortedPrice();
+            var model = new ItemViewModel(item, shopItems);
+            return View("Items", model);
+        }
+        [HttpGet("only-available")]
+        public IActionResult ItemsOnlyAvailable(ShopItem item)
+        {
+            var shopItems = service.ItemsOnlyAvailable();
+            var model = new ItemViewModel(item, shopItems);
+            return View("Items", model);
+        }
     }
 }
