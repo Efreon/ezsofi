@@ -20,9 +20,9 @@ namespace MyShop.Models.ViewModels
         {
             StockQtyAvg = value;
         }
-        public ItemViewModel(string name)
+        public ItemViewModel(string mostExpensiveName)
         {
-            ItemName = name;
+            ItemName = mostExpensiveName;
         }
     }
 }
