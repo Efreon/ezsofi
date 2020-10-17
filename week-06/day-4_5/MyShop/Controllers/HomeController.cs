@@ -22,7 +22,6 @@ namespace MyShop.Controllers
         {
             return "Hello World";
         }
- 
         [HttpGet("items")]
         public IActionResult Items(ShopItem item)
         {
@@ -51,6 +50,13 @@ namespace MyShop.Controllers
             var model = new ItemViewModel(item, shopItems);
             return View("Items", model);
         }
+        [HttpPost("search")]
+        public IActionResult Search(ShopItem item, /*[FromQuery(Name = "search")]*/ string search)
+        {
+            var shopItems = service.Search(search);
+            var model = new ItemViewModel(item, shopItems);
+            return View("Items", model);
+        }
         [HttpGet("average-stock")]
         public IActionResult AverageStockPrice()
         {
@@ -61,7 +67,7 @@ namespace MyShop.Controllers
         [HttpGet("most-expensive")]
         public IActionResult MostExpensive()
         {
-            var mostExpensive = service.AverageStockPrice();
+            var mostExpensive = service.MostExpensive();
             var model = new ItemViewModel(mostExpensive);
             return View("mostExpensive", model);
         }

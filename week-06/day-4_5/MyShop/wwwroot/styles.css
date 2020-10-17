@@ -68,14 +68,17 @@ table {
     box-shadow: 2px 2px 8px #A52149;
     text-align: left;
     border-radius: 8px;
-    color:white;
-    font-size:18px;
+    color: white;
+    font-size: 18px;
+    padding: 1% 1% 1% 1%;
+    line-height:1.5;
 }
 th {
     vertical-align: central;
     font-size: 20px;
     color: #A52149;
     border-collapse: collapse;
+
 }
 .singleValueContainer {
     display: flex;

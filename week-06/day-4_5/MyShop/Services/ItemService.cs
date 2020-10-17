@@ -60,6 +60,18 @@ namespace MyShop.Services
                                                                  Double.Parse(i.Split(";").ElementAt(3))))
                                         .ToList();
         }
+        //search//
+        public List<ShopItem> Search(string search)
+        {
+            return
+            File.ReadAllLines(filePath).Where(i => i.Split(";").ElementAt(0).ToLower().Contains(search.ToLower()) 
+                                              || i.Split(";").ElementAt(1).ToLower().Contains(search.ToLower()))
+                                        .Select(i => new ShopItem(i.Split(";").ElementAt(0),
+                                                                 i.Split(";").ElementAt(1),
+                                                                 Double.Parse(i.Split(";").ElementAt(2)),
+                                                                 Double.Parse(i.Split(";").ElementAt(3))))
+                                        .ToList();
+        }
         //average-stock//
         public double AverageStockPrice()
         {
@@ -68,14 +80,17 @@ namespace MyShop.Services
                                        .Select(i => Double.Parse(i.Split(";").ElementAt(3)))
                                        .Average();
         }
+        //most-expensive//
         public string MostExpensive()
         {
             return
             File.ReadAllLines(filePath).Where(i => Double.Parse(i.Split(";").ElementAt(2)) > 0)
                                        .OrderByDescending(i => Double.Parse(i.Split(";").ElementAt(2)))
-                                       .Select(i => Double.Parse(i.Split(";").ElementAt(0)))
-                                       .ToString();
+                                       .Select(i => i.Split(";").ElementAt(0))
+                                       .Take(1)
+                                       .ToList()[0];
         }
+        
         private void EnsureFileExists()
         {
             if(!File.Exists(filePath))

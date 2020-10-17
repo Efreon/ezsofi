@@ -23,10 +23,9 @@ namespace MyShop.Models
         {
 
         }
-        public override string ToString()
-        {
-            return $"{Name};{Description};{Price};{QuantityOfStock}";
-        }
-
+        //public override string ToString()
+        //{
+        //    return $"{Name};{Description};{Price};{QuantityOfStock}";
+        //}
     }
 }
