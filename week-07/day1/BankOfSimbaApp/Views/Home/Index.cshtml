@@ -1,0 +1,38 @@
+﻿@using BankOfSimbaApp.Models.ViewModels
+@model AccountsViewModel
+@{ 
+    var accounts = Model.Accounts;
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>MyShop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    // <link href="~/styles.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="header" >
+        <p> Bank of Simba</p>
+    </div>
+    <div class="accountsTable">
+        <table>
+            <thead>
+                <tr>
+                    <th>Account name</th>
+                    <th>Account balance</th>
+                    <th>Animal Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var account in accounts)
+                {
+                <tr>
+                    <td> @account.Name</td>
+                    <td> @account.BalanceTwoDecimals</td>
+                    <td> @account.AnimalType</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
