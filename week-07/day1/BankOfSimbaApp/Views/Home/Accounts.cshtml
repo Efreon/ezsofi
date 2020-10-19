@@ -27,15 +27,12 @@
                 @for (int i = 0; i < accounts.Count; i++)
                 {
                     <tr>
+                        <td> @Html.</td>
                         <td> @i</td>
                         <td> @accounts[i].Name</td>
                         <td> @accounts[i].BalanceTwoDecimals</td>
                         <td> @accounts[i].AnimalType</td>
                     </tr>
-                }
-                @foreach (var account in accounts)
-                {
-
                 }
             </tbody>
         </table>

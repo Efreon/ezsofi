@@ -21,7 +21,7 @@ namespace BankOfSimbaApp.Controllers
         [HttpGet("show")]
         public IActionResult OneAccount()
         {
-            var account = new BankAccount("Simba", 2000, "lion");
+            var account = new BankAccount("Simba", 2000, "lion", false, false);
             var model = new OneAccountViewModel(account);
 
             return View(model);
@@ -38,10 +38,11 @@ namespace BankOfSimbaApp.Controllers
         public IActionResult Accounts()
         {
             var accounts = new List<BankAccount>();
-            accounts.Add(new BankAccount("Nala", 1500, "lion"));
-            accounts.Add(new BankAccount("Timon", 250, "meerkat"));
-            accounts.Add(new BankAccount("Rafiki", 500, "mandrill"));
-            accounts.Add(new BankAccount("Nala", 500, "lion"));
+            accounts.Add(new BankAccount("Nala", 1500, "lion", false, false));
+            accounts.Add(new BankAccount("Timon", 250, "meerkat", true, false));
+            accounts.Add(new BankAccount("Rafiki", 500, "mandrill", false, false));
+            accounts.Add(new BankAccount("Mufasa", 500, "lion", false, false));
+            accounts.Add(new BankAccount("Scar", 1870, "lion", false, true));
 
             var model = new AccountsViewModel(accounts);
 
