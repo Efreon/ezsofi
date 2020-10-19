@@ -1,12 +1,8 @@
 ﻿@using BankOfSimbaApp.Models.ViewModels
-@model OneAccountViewModel
-@{ 
-    var name = Model.Account.Name;
-    var balance = Model.Account.Balance;
-    var balance2d = Model.Account.BalanceTwoDecimals;
-    var animalType = Model.Account.AnimalType;
+@model AccountsViewModel
+@{
+    var accounts = Model.Accounts;
 }
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>MyShop</title>
@@ -14,21 +10,33 @@
     <link href="~/styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+    <div class="header">
+        <p> Bank of Simba</p>
+    </div>
     <div class="accountsTable">
         <table>
             <thead>
                 <tr>
+                    <th>index</th>
                     <th>Account name</th>
                     <th>Account balance</th>
                     <th>Animal Type</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td> @name</td>
-                    <td> @balance2d</td>
-                    <td> @animalType</td>
-                </tr>
+                @for (int i = 0; i < accounts.Count; i++)
+                {
+                    <tr>
+                        <td> @i</td>
+                        <td> @accounts[i].Name</td>
+                        <td> @accounts[i].BalanceTwoDecimals</td>
+                        <td> @accounts[i].AnimalType</td>
+                    </tr>
+                }
+                @foreach (var account in accounts)
+                {
+
+                }
             </tbody>
         </table>
     </div>

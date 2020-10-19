@@ -27,16 +27,25 @@ namespace BankOfSimbaApp.Controllers
             return View(model);
         }
         /*
-        [HttpGet("show")]
-        public IActionResult Index()
+        [HttpGet("HTMLception")]
+        public IActionResult HTMLception()
         {
-            // var account = new BankAccount("Simba", 2000, "lion");
-            // return View(account);
-            var accounts = service.ReadData();
-            var model = new AccountViewModel(accounts);
+            string text = "This is an <em>HTML</em> text. <b>Enjoy yourself!</b>";
+
+        }
+        */
+        [HttpGet("accounts")]
+        public IActionResult Accounts()
+        {
+            var accounts = new List<BankAccount>();
+            accounts.Add(new BankAccount("Nala", 1500, "lion"));
+            accounts.Add(new BankAccount("Timon", 250, "meerkat"));
+            accounts.Add(new BankAccount("Rafiki", 500, "mandrill"));
+            accounts.Add(new BankAccount("Nala", 500, "lion"));
+
+            var model = new AccountsViewModel(accounts);
 
             return View(model);
         }
-         */
     }
 }

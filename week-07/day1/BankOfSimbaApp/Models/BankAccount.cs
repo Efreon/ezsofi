@@ -19,6 +19,5 @@ namespace BankOfSimbaApp.Models
             AnimalType = animalType;
             BalanceTwoDecimals = String.Format("{0:0.00}", balance) + " Zebra";
         }
-
     }
 }

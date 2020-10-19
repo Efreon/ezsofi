@@ -9,8 +9,9 @@ namespace BankOfSimbaApp.Services
 {
     public class AccountServices
     {
-        private readonly string filePath;
+        // private readonly string filePath;
         // public List<BankAccount> AccountData;
+        /*
         public AccountServices()
         {
             filePath = @"D:\greenfox\ezsofi\week-07\day1\BankOfSimbaApp\data\accounts.txt";
@@ -35,6 +36,6 @@ namespace BankOfSimbaApp.Services
             {
                 File.Create(filePath).Close();
             }
-        }
+        }*/
     }
 }
