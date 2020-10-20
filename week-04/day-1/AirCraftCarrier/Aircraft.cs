@@ -5,48 +5,47 @@ using System.Text;
 
 namespace AirCraftCarrier
 {
-    class Aircraft
+    public class Aircraft
     {
         protected int maxAmmo;
-        protected int currAmmo;
+        protected int ammoLevel;
         protected int baseDamage;
         protected int allDamage;
         protected string aircraftType;
         protected bool isPriorityAmmo;
 
-        public int MaxAmmo {get; set;}
-        public int CurrAmmo { get; set; }
-        public int BaseDamage { get; set; }
-        public int AllDamage { get; set; }
-        public string AircraftType { get; set; }
-        public bool IsPriorityAmmo { get; set; }
+        public virtual int MaxAmmo { get; protected set; }
+        public virtual int AmmoLevel { get; set; }
+        public virtual int BaseDamage { get; protected set; }
+        public virtual int AllDamage { get; protected set; }
+        public virtual string AircraftType { get; protected set; }
+        public virtual bool IsPriorityAmmo { get; protected set; }
 
         public Aircraft()
         {
-            MaxAmmo = 0;
-            CurrAmmo = 0;
-            BaseDamage = 0;
-            AllDamage = 0;
-            AircraftType = "";
-            IsPriorityAmmo = false;
+            AmmoLevel = 0;
+        }
+        public void EmptyAmmo()
+        {
+            AmmoLevel = 0;
         }
         public int Fight()
         {
-            BaseDamage += BaseDamage * CurrAmmo;
-            return (BaseDamage * CurrAmmo);
-            CurrAmmo = 0;
+            AllDamage += BaseDamage * AmmoLevel;
+            EmptyAmmo();
+            return (BaseDamage * AmmoLevel);
         }
         public int Refill(int amount)
         {
-            if (amount - (MaxAmmo - CurrAmmo) > 0)
+            if (amount - (MaxAmmo - AmmoLevel) > 0)
             {
-                CurrAmmo += (MaxAmmo - CurrAmmo);
+                AmmoLevel += (MaxAmmo - AmmoLevel);
             }
             else
             {
-                CurrAmmo += amount;
+                AmmoLevel += amount;
             }
-            return (amount - (MaxAmmo - CurrAmmo));
+            return (amount - (MaxAmmo - AmmoLevel));
         }
         public string GetType()
         {
@@ -55,7 +54,7 @@ namespace AirCraftCarrier
 
         public string GetStatus()
         {
-            return $"Type {AircraftType}, Ammo: {CurrAmmo}, Base Damage: {BaseDamage}, All Damage: {AllDamage}";
+            return $"Type {AircraftType}, Ammo: {AmmoLevel}, Base Damage: {BaseDamage}, All Damage: {AllDamage}";
         }
 
         public bool IsPriority()

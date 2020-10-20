@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "W2D3_ExceptionsFileReadWriteWorkshop", "W2D3_ExceptionsFileReadWriteWorkshop.csproj", "{BF83B2E5-7BB7-4BC0-B2AD-7A2BDC40E14D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF83B2E5-7BB7-4BC0-B2AD-7A2BDC40E14D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF83B2E5-7BB7-4BC0-B2AD-7A2BDC40E14D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF83B2E5-7BB7-4BC0-B2AD-7A2BDC40E14D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF83B2E5-7BB7-4BC0-B2AD-7A2BDC40E14D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {80A880D1-A3D6-4CD3-9CE5-41812A24B360}
+	EndGlobalSection
+EndGlobal

@@ -9,7 +9,7 @@ namespace DataStructures
     {
         static void Main(string[] args)
         {
-            PersonalFinance();
+            TelephoneBook();
         }
 
         //// STRINGS ////
@@ -341,8 +341,19 @@ namespace DataStructures
                 telephoneBook.Add(name[i], phoneNumber[i]);
             }
             // Create an application which solves the following problems.
-            //
-
+            //What is John K. Miller's phone number?
+            Console.WriteLine($"John K. Miller's phone number is: {telephoneBook["John K. Miller"]}");
+            // Whose phone number is 307 - 687 - 2982 ?
+            foreach(KeyValuePair<string, string> kvp in telephoneBook)
+            {   
+                if (kvp.Value == "307-687-2982")
+                {
+                    Console.WriteLine($"307-687-2982 is {kvp.Key}'s phone number");
+                }
+            }
+            // Do we know Chris E.Myers' phone number?
+            Console.WriteLine(telephoneBook.ContainsKey("Chris E.Myers"));
         }
+
     }
 }

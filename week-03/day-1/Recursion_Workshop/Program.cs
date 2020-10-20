@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,7 +9,6 @@ namespace Recursion_Workshop
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Fibonacci(3));
         }
 
         public static long NumberAdder(int n)
@@ -188,5 +188,23 @@ namespace Recursion_Workshop
                 return Fibonacci(n - 1) + Fibonacci(n - 2);
             }
         }
+        
+        /* NO FINAL SOLUTION
+        public static string MaximumFinder(List<int> numbers)
+        {
+            // Write a function that finds the largest element of an array using recursion.
+            if (numbers.Length == 1)
+            {
+                return numbers;
+            }
+            else
+            {
+                if (numbers[1] >= numbers[0] )
+                {
+                    numbers.RemoveAt
+                }
+            }
+        }
+        */
     }
 }

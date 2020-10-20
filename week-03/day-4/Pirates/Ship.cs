@@ -7,32 +7,23 @@ namespace Pirates
 {
     public class Ship
     {
+        // FIELDS
         private List<Pirate> crew;
         private bool isCaptainDrunk;
         private string captainState;
         private int aliveCrew;
 
+        // CONSTRUCTOR
         public Ship()
         {
             crew = new List<Pirate>();
         }
 
-        public List<Pirate> Crew
-        {
-            get { return crew; }
-            set { }
-        }
-        public bool IsCaptainDrunk
-        {
-            get { return isCaptainDrunk; }
-            set { }
-        }
-        /*public bool CaptainRum 
-        {
-            get { return }
-            set { return }
-        }*/
+        // PROPERTIES
+        public List<Pirate> Crew {get { return crew; } set { }}
+        public bool IsCaptainDrunk{get { return isCaptainDrunk; }set { }}
 
+        // METHODS
         public void FillShip()
         {
             var randomCrew = new Random().Next(5, 26);
@@ -80,6 +71,11 @@ namespace Pirates
             }
             Console.WriteLine($"The captain has drunk: {isCaptainDrunk} and {captainState}.");
             Console.WriteLine($"There are {aliveCrew} alive pirates on the ship.");
+        }
+
+        public void Battle(string otherShip) 
+        { 
+
         }
     }
 }

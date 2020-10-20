@@ -9,6 +9,7 @@ namespace AirCraftCarrier
         public F16()
         {
             MaxAmmo = 8;
+            AmmoLevel = 0;
             BaseDamage = 30;
             AircraftType = "F16";
             IsPriorityAmmo = false;

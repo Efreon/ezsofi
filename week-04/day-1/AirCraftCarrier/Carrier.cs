@@ -34,7 +34,7 @@ namespace AirCraftCarrier
 
                 for (int i=0; i < AircraftCarrier.Count; i++)
                 {
-                    ammoNeeded += (AircraftCarrier[i].MaxAmmo - AircraftCarrier[i].CurrAmmo);
+                    ammoNeeded += (AircraftCarrier[i].MaxAmmo - AircraftCarrier[i].AmmoLevel);
                     if (AircraftCarrier[i].IsPriorityAmmo)
                     {
                         sortedAircrafts.Add(AircraftCarrier[i]);
@@ -50,16 +50,16 @@ namespace AirCraftCarrier
                 {
                     for (int i = 0; i < sortedAircrafts.Count; i++)
                     {
-                        sortedAircrafts[i].Refill((sortedAircrafts[i].MaxAmmo - sortedAircrafts[i].CurrAmmo));
-                        StoreAmmo -= (sortedAircrafts[i].MaxAmmo - sortedAircrafts[i].CurrAmmo);
+                        sortedAircrafts[i].Refill((sortedAircrafts[i].MaxAmmo - sortedAircrafts[i].AmmoLevel));
+                        StoreAmmo -= (sortedAircrafts[i].MaxAmmo - sortedAircrafts[i].AmmoLevel);
                     }
                 }
                 else
                 {
                     for (int i = 0; i < AircraftCarrier.Count; i++)
                     {
-                        AircraftCarrier[i].Refill((AircraftCarrier[i].MaxAmmo - AircraftCarrier[i].CurrAmmo));
-                        StoreAmmo -= (AircraftCarrier[i].MaxAmmo - AircraftCarrier[i].CurrAmmo);
+                        AircraftCarrier[i].Refill((AircraftCarrier[i].MaxAmmo - AircraftCarrier[i].AmmoLevel));
+                        StoreAmmo -= (AircraftCarrier[i].MaxAmmo - AircraftCarrier[i].AmmoLevel);
                     }
                 }
             }
@@ -69,8 +69,10 @@ namespace AirCraftCarrier
             int availableAmmo = 0;
             for (int i=0; i < AircraftCarrier.Count; i++)
             {
-                availableAmmo += AircraftCarrier[i].CurrAmmo;
-                AircraftCarrier[i].CurrAmmo = 0;
+                // count a total damage point and subtract it from the healthpoint of the other
+                // then the other shoots and can be done the same against my carrier
+                availableAmmo += AircraftCarrier[i].AmmoLevel;
+                AircraftCarrier[i].AmmoLevel = 0;
             }
 
         }

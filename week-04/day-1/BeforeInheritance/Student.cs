@@ -4,17 +4,18 @@ using System.Text;
 
 namespace BeforeInheritance
 {
-    public class Student
+    public class Student : Person
     {
         // FIELDS
-        string Name;                     
-        int Age;                         
-        string Gender;                   
+        //string name;                     
+        //int age;                         
+        //string gender;                   
         string PreviousOrganization;     
         int SkippedDays;                 
 
         // CONSTRUCTORS
-        public Student(string name, int age, string gender, string previousOrganization)
+        public Student(string name, int age, string gender, string previousOrganization) 
+             : base(name, age, gender)
         {
             Name = name;
             Age = age;
@@ -34,12 +35,12 @@ namespace BeforeInheritance
 
         // METHODS
 
-        public void Introduce()
+        public override void Introduce()
         {
             Console.WriteLine($"Hi, I'm {Name}, a {Age} year old {Gender} from {PreviousOrganization} who skipped {SkippedDays} days from the course already.");
         }
 
-        public void GetGoal()
+        public override void GetGoal()
         {
             Console.WriteLine("Be a junior software developer.");
         }

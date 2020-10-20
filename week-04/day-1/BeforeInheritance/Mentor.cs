@@ -4,16 +4,17 @@ using System.Text;
 
 namespace BeforeInheritance
 {
-    public class Mentor
+    public class Mentor : Person
     {
         // FIELDS
-        string Name;   
-        int Age;        
-        string Gender;  
+        //string Name;   
+        //int Age;        
+        //string Gender;  
         string Level;
 
         // CONTRUCTORS
-        public Mentor(string name, int age, string gender, string level)
+        public Mentor(string name, int age, string gender, string level) 
+            : base(name, age, gender)
         {
             Name = name;
             Age = age;
@@ -30,12 +31,12 @@ namespace BeforeInheritance
         }
 
         // METHODS
-        public void Introduce()
+        public override void Introduce()
         {
             Console.WriteLine($"Hi, I'm {Name}, a {Age} year old {Gender} {Level} mentor.");
         }
 
-        public void GetGoal()
+        public override void GetGoal()
         {
             Console.WriteLine("Educate brilliant junior software developers.");
         }

@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\shopbackground.jpg" />
+    <None Include="wwwroot\styles.css" />
+  </ItemGroup>
+
 </Project>

@@ -22,7 +22,6 @@ namespace SwearWords
         public static /*void*/ int WordsRemove(string filepath)
         {
             int removedWords = 0;
-            List<string> RemovedWords = new List<string>();
 
             string[] wtr = { "fuck", "bloody", "cock", "shit", "fucker", "fuckstick", "asshole", "dick", "piss", "cunt" };
             string content = File.ReadAllText(filepath);

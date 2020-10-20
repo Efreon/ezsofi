@@ -18,7 +18,7 @@ namespace Zoo
         public int Legs { get; protected set; }
         public bool CanFly { get; protected set; }
 
-        public abstract string Greet();
+        public abstract string Greet(); 
         public abstract string WantChild();
         public abstract string GetName();
     }

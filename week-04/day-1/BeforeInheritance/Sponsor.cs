@@ -4,17 +4,18 @@ using System.Text;
 
 namespace BeforeInheritance
 {
-    public class Sponsor
+    public class Sponsor : Person
     {
         // FIELDS
-        string Name;
-        int Age;
-        string Gender;
+        //string Name;
+        //int Age;
+        //string Gender;
         string Company;
         int HiredStudents;
 
         // CONSTRUCTORS
-        public Sponsor(string name, int age, string gender, string company)
+        public Sponsor(string name, int age, string gender, string company) 
+            : base(name, age, gender)
         {
             Name = name;
             Age = age;
@@ -33,7 +34,7 @@ namespace BeforeInheritance
         }
 
         // METHODS
-        public void Introduce()
+        public override void Introduce()
         {
             Console.WriteLine($"Hi, I'm {Name}, a {Age} year old {Gender} who represents {Company} and hired {HiredStudents} students so far.");
         }
@@ -41,7 +42,7 @@ namespace BeforeInheritance
         {
             HiredStudents += 1;
         }
-        public void GetGoal()
+        public override void GetGoal()
         {
             Console.WriteLine("Hire brilliant junior software developers.");
         }

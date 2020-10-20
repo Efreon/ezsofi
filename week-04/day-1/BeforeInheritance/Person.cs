@@ -28,12 +28,12 @@ namespace BeforeInheritance
         }
 
         // METHODS
-        public void Introduce()
+        public virtual void Introduce()
         {
             Console.WriteLine($"Hi, I'm {Name}, a {Age} year old {Gender}");
         }
 
-        public void GetGoal()
+        public virtual void GetGoal()
         {
             Console.WriteLine("My goal is: Live for the moment!");
         }

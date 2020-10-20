@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+    <link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+<body>
+    <!-- TABLE-->
+    <table>
+        <thead>
+            <tr> <!-- table row -->
+                <th> <!-- table header -->
+                        Month
+                </th> 
+                <th> 
+                        Sales
+                </th>   
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> <!-- table data -->
+                    January
+                </td>
+                <td>
+                    50000
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    February
+                </td>
+                <td>
+                    10000
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    March
+                </td>
+                <td>
+                    85000
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <th> 
+                    Month
+            </th> 
+            <th> 
+                    Sales
+            </th>   
+        </tfoot>
+    </table>
+
+    <!-- FORMS -->
+    <form action="https://httpbin.org/post" method="POST">
+        <div>
+            <label for="bunnyname">Bunny name</label>
+            <input type="text" name="bunnyname" id="bunnynameelement" required></input>
+            <input type="date" name="date" id="bunnynameelement" ></input>
+        </div>
+        <!--RADIO BUTTONS-->
+        <div>
+            <!-- value: that info is returned if selected, if no value, then only "on is returned"-->
+            <label><input type="radio" name="color" value="grey">Grey</label>
+            <label><input type="radio" name="color" value="white">White</label>
+            <label><input type="radio" name="color" value="ginger">Ginger</label>
+        </div>
+        <!--CHECKBOXES-->
+        <label><input type="checkbox" name="kidfriendly" value="true" checked>Good with kids</label>
+        <div>
+            <textarea>Bunny's default bio</textarea>
+        </div>
+        <!--VALIDATION: 
+            required, 
+            type is validation lehet, ha nem megfelelő formátumban írok bele, nem fogadja el
+            autofocus: put the cursor into the field
+            autocomplete: ha megadjuk a type-ot, kiegészíti; autocomplete="on"; name-t is ki kell tölteni
+        -->
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

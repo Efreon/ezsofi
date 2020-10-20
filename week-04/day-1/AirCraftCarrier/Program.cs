@@ -6,7 +6,10 @@ namespace AirCraftCarrier
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var f16Aircraft = new F16();
+            Console.WriteLine(f16Aircraft.GetStatus());
+            Console.WriteLine(f16Aircraft.Refill(50));
+            Console.WriteLine(f16Aircraft.GetStatus());
         }
     }
 }

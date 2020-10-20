@@ -1,7 +1,7 @@
 ﻿body {
     background: url(shopbackground.jpg) no-repeat center center fixed;
     background-size: cover;
-    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
 }
 
 .topContainer {
@@ -9,11 +9,12 @@
     padding: 10% 10% 2% 10%;
 }
 
-.title {
+.title a {
     color: #A52149;
     font-size: 36px;
     text-align: left;
     border-bottom: 2px solid #A52149;
+    text-decoration: none;
 }
 .buttonContainer {
     display: flex;
@@ -33,7 +34,7 @@
     width: 18%;
     border-radius: 8px;
 }
-a {
+.buttonBox a {
     text-decoration: none;
     color: white;
 }

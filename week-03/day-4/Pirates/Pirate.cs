@@ -6,7 +6,7 @@ namespace Pirates
 {
     public class Pirate
     {
-        // VARIABLES
+        // FIELDS
         private string name;
         private int toxicLevel;
         private bool isAlive;
@@ -24,16 +24,14 @@ namespace Pirates
             hasParrot = false;
             isCaptain = false;
         }
-
         // PROPERTIES
-        public string Name {get { return name; } set { }}
-        public int ToxicLevel { get { return toxicLevel; } set { } }
-        public bool IsAlive { get { return isAlive; } set { } }
-        public bool IsPassedOut { get { return isPassedOut; } set { } }
-        public bool HasParrot { get { return hasParrot; } set { } }
-        public bool IsCaptain { get { return isCaptain; } set { } }
+        public string Name {get { return name; } set { name = value; }}
+        public int ToxicLevel { get { return toxicLevel; } set { toxicLevel = value; } }
+        public bool IsAlive { get { return isAlive; } set { isAlive = value; } }
+        public bool IsPassedOut { get { return isPassedOut; } set { isPassedOut = value; } }
+        public bool HasParrot { get { return hasParrot; } set { hasParrot = value; } }
+        public bool IsCaptain { get { return isCaptain; } set { isCaptain = value; } }
         // METHODS
-        // DrinkSomeRum() - intoxicates the Pirate some
         public void DrinkSomeRum()
         {
             ToxicLevel++;
@@ -42,9 +40,6 @@ namespace Pirates
                 Die();
             }
         }
-        // HowsItGoingMate() - when called, the Pirate replies
-        // if DrinkSomeRun was called:-0 to 4 times, "Pour me anudder!"
-        // else, "Arghh, I'ma Pirate. How d'ya d'ink its goin?", the pirate passes out and sleeps it off.
         public void HowsItGoingMate()
         {
             if (ToxicLevel <= 4)

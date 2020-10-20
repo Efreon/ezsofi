@@ -4,11 +4,12 @@ using System.Text;
 
 namespace AirCraftCarrier
 {
-    class F35 : Aircraft
+    public class F35 : Aircraft
     {
         public F35()
         {
             MaxAmmo = 12;
+            AmmoLevel = 0;
             BaseDamage = 50;
             AircraftType = "F35";
             IsPriorityAmmo = true;

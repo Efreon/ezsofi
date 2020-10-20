@@ -1,0 +1,30 @@
+body {
+    color: green;
+}
+td, th {
+    border: 1px solid black;
+}
+table {
+    border-collapse: collapse;
+} 
+tbody tr:nth-child(3n) {
+    background: pink;
+}
+#bunnynameelement{
+    border: 1px  solid green;
+}
+
+form div {
+
+}
+textarea{
+    height: 120px;
+    width: 120px;
+}
+input:invalid {
+    background: red;
+}
+/* highlight the field i'm currently*/
+input:focus {
+    border: green;
+}

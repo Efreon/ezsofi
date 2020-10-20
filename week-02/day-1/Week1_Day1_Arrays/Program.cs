@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography.X509Certificates;
 
-namespace Week1_Day2_Arrays
+namespace Week1_Day1_Arrays
 {
     class Program
     {
