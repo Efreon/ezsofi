@@ -10,41 +10,48 @@
     <link href="~/styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div class="header">
-        <p> Bank of Simba</p>
+    <div class="title_container">
+        <div class="header">
+            <p> Bank of Simba</p>
+        </div>
     </div>
-    <div class="accountsTable">
-        <table>
-            <thead>
-                <tr>
-                    <th>index</th>
-                    <th>Account name</th>
-                    <th>Account balance</th>
-                    <th>Animal Type</th>
-                    <th>King?</th>
-                    <th>Good or bad?</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (int i = 0; i < accounts.Count; i++)
-                {
-                <tr>
-                    <td> @i</td>
-                    <td> @accounts[i].Name</td>
-                    <td> @accounts[i].BalanceTwoDecimals</td>
-                    <td> @accounts[i].AnimalType</td>
-                    <td> @accounts[i].IsKing</td>
-                    <td> @accounts[i].IsGood</td>
-                </tr>
-                }
-            </tbody>
-        </table>    
+    
+    <div class="table_action_container">
+        <div class="accountsTable">
+            <table>
+                <thead>
+                    <tr>
+                        <th>index</th>
+                        <th>Account name</th>
+                        <th>Account balance</th>
+                        <th>Animal Type</th>
+                        <th>King?</th>
+                        <th>Good or bad?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < accounts.Count; i++)
+                    {
+                        <tr>
+                            <td> @(i+1)</td>
+                            <td> @accounts[i].Name</td>
+                            <td> @accounts[i].BalanceTwoDecimals</td>
+                            <td> @accounts[i].AnimalType</td>
+                            <td class="@accounts[i].IsKing==true ? "classKing":"classNoKing")"> @accounts[i].IsKing</td>
+                            <td> @accounts[i].IsGood</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="addaccount_container">
+            @Html.Partial("_AddAccount")
+        </div>
+        <div class="raisebalance_container">
+            @Html.Partial("_RaiseBalance")
+        </div>
     </div>
-    <div>
-        @Html.Partial("_AddAccount")
-    </div>
-    <div>
-        @Html.Partial("_RaiseBalance")
-    </div>
+    
+    
 </body>
 </html>

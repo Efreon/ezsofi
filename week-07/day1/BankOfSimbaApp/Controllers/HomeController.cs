@@ -23,16 +23,18 @@ namespace BankOfSimbaApp.Controllers
         public IActionResult OneAccount()
         {
             var account = new BankAccount("Simba", 2000, "lion", false, false);
-            var model = new OneAccountViewModel(account);
+           // var model = new OneAccountViewModel(account);
 
-            return View(model);
+            return View(account);
         }
         
         [HttpGet("HTMLception")]
         public IActionResult HTMLception()
         {
-            var text = new HTMLCeptionvIEWmODEL();
-            return View(text);
+
+            var text = "This is an <em>HTML</em> text. <b>Enjoy yourself!</b>";
+            //var text = new HTMLCeptionvIEWmODEL();
+            return View("HTMLception",text);
         }
         
         [HttpGet("accounts")]

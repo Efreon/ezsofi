@@ -1,0 +1,60 @@
+﻿body {
+    background: url(background.jpg) no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Roboto', sans-serif;
+
+}
+img {
+    opacity: 0.3;
+}
+.header {
+    font-size: 36px;
+    text-align: center;
+    color: #8F6A48;
+    padding-top: 1%;
+}
+.table_action_container {
+    display: flex;
+    padding: 0% 10% 0% 10%;
+}
+    .table_action_container div{
+        padding: 0% 5% 0% 5%;
+    }
+.addaccount_container {
+    border: 2px solid #8F6A48;
+    padding: 0% 5% 0% 5%;
+    line-height: 2;
+    text-align: center;
+    color: #8F6A48;
+    font-size:16px;
+}
+.raisebalance_container {
+    border: 2px solid #8F6A48;
+    padding: 0% 5% 0% 5%;
+    line-height: 2;
+    text-align: center;
+    color: #8F6A48;
+    font-size: 16px;
+}
+th {
+    /*border-bottom: 2px solid #8F6A48;*/
+    border-collapse: collapse;
+    color: #8F6A48;
+    font-size: 18px;
+}
+td {
+    border-bottom: 1px solid #8F6A48;
+    color: #C2BDA0;
+}
+table {
+    border: 2px solid #8F6A48;
+}
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+classKing {
+    color: #8F6A48;
+    font-size: 24px;
+    background-color: #C2BDA0;
+}

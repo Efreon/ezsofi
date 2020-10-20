@@ -25,7 +25,6 @@ namespace BankOfSimbaApp.Models
         }
         public BankAccount()
         {
-
         }
         public override string ToString()
         {
