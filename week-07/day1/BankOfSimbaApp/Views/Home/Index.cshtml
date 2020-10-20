@@ -5,12 +5,12 @@
 }
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>MyShop</title>
+    <title>BankOfSimba</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    // <link href="~/styles.css" rel="stylesheet" type="text/css" />
+    <link href="~/styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div class="header" >
+    <div class="header">
         <p> Bank of Simba</p>
     </div>
     <div class="accountsTable">
@@ -25,11 +25,11 @@
             <tbody>
                 @foreach (var account in accounts)
                 {
-                <tr>
-                    <td> @account.Name</td>
-                    <td> @account.BalanceTwoDecimals</td>
-                    <td> @account.AnimalType</td>
-                </tr>
+                    <tr>
+                        <td> @account.Name</td>
+                        <td> @account.BalanceTwoDecimals</td>
+                        <td> @account.AnimalType</td>
+                    </tr>
                 }
             </tbody>
         </table>

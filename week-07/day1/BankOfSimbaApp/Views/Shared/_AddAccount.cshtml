@@ -1,0 +1,34 @@
+﻿@using BankOfSimbaApp.Models.ViewModels
+@model AccountsViewModel
+@{
+    var account = Model.Accounts;
+}
+
+<form action="addaccount" method="post">
+    <div>
+        <label for="Name">Account Name</label>
+        <input type="text" id="AccountName" name="name" required />
+    </div>
+
+    <div>
+        <label for="Balance">Account Balance</label>
+        <input type="text" id="AccountBalance" name="balance" required />
+    </div>
+
+    <div>
+        <label for="AnimalType">Animal Type</label>
+        <input type="text" id="AnimalType" name="animalType" required />
+    </div>
+
+    <div>
+        <label for="IsKing">King</label>
+        <input type="radio" id="IsKing" name="isKing" value=true />
+    </div>
+
+    <div>
+        <label for="IsGood">good</label>
+        <input type="radio" id="IsGood" name="isGood" value=true />
+    </div>
+
+    <input type="submit" value="Create Account" />
+</form>

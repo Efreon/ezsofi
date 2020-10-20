@@ -31,22 +31,40 @@ namespace BankOfSimbaApp.Controllers
         public IActionResult HTMLception()
         {
             string text = "This is an <em>HTML</em> text. <b>Enjoy yourself!</b>";
-
         }
         */
         [HttpGet("accounts")]
         public IActionResult Accounts()
         {
-            var accounts = new List<BankAccount>();
-            accounts.Add(new BankAccount("Nala", 1500, "lion", false, false));
-            accounts.Add(new BankAccount("Timon", 250, "meerkat", true, false));
-            accounts.Add(new BankAccount("Rafiki", 500, "mandrill", false, false));
-            accounts.Add(new BankAccount("Mufasa", 500, "lion", false, false));
-            accounts.Add(new BankAccount("Scar", 1870, "lion", false, true));
-
+            //var accounts = new List<BankAccount>();
+            //accounts.Add(new BankAccount("Nala", 1500, "lion", false, false));
+            //accounts.Add(new BankAccount("Timon", 250, "meerkat", true, false));
+            //accounts.Add(new BankAccount("Rafiki", 500, "mandrill", false, false));
+            //accounts.Add(new BankAccount("Mufasa", 500, "lion", false, false));
+            //accounts.Add(new BankAccount("Scar", 1870, "lion", false, true));
+            var accounts = service.ReadData();
             var model = new AccountsViewModel(accounts);
-
             return View(model);
+        }
+        [HttpPost("addaccount")]
+        public IActionResult AddAccount(BankAccount account)
+        {
+            service.AddAccount(account);
+            return RedirectToAction("accounts");
+        }
+        [HttpPost("raisebalance")]
+        public IActionResult RaiseBalance(string name)
+        {
+            var accounts = service.ReadData();
+            foreach (var account in accounts)
+            {
+                if(account.Name.ToLower() == name.ToLower())
+                {
+                    account.RaiseBalance();
+                }
+            }
+            service.UpdateData();
+            return RedirectToAction("accounts");
         }
     }
 }

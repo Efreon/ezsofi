@@ -1,0 +1,14 @@
+﻿@using BankOfSimbaApp.Models.ViewModels
+@model AccountsViewModel
+@{
+    var account = Model.Accounts;
+}
+
+<form action="raiseBalance" method="post">
+    <div>
+        <label for="Name">Account Name</label>
+        <input type="text" id="AccountName" name="name" required />
+    </div>
+
+    <input type="submit" value="Raise Balance" />
+</form>
