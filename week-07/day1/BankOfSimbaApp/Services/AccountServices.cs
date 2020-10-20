@@ -20,7 +20,7 @@ namespace BankOfSimbaApp.Services
         //all items//
         public List<BankAccount> ReadData()
         {
-            var accountData = File.ReadAllLines(filePath).Select(i => new BankAccount(i.Split(";").ElementAt(0),
+            accountData = File.ReadAllLines(filePath).Select(i => new BankAccount(i.Split(";").ElementAt(0),
                                                                                   Double.Parse(i.Split(";").ElementAt(1)),
                                                                                   (i.Split(";").ElementAt(2)),
                                                                                   Boolean.Parse(i.Split(";").ElementAt(3)),
@@ -36,7 +36,7 @@ namespace BankOfSimbaApp.Services
         // update data //
         public void UpdateData()
         {
-            accountData = ReadData();
+            // accountData = ReadData();
             File.WriteAllText(filePath, "");
             foreach(var account in accountData)
             {

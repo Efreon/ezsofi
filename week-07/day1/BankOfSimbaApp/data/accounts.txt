@@ -1,0 +1,2 @@
+Simba;1600;lion;True;False
+Nala;15010;lion;False;False

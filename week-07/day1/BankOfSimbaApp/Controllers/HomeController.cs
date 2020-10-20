@@ -18,6 +18,7 @@ namespace BankOfSimbaApp.Controllers
         {
             service = new AccountServices();
         }
+        // Showing one account //
         [HttpGet("show")]
         public IActionResult OneAccount()
         {
@@ -26,13 +27,14 @@ namespace BankOfSimbaApp.Controllers
 
             return View(model);
         }
-        /*
+        
         [HttpGet("HTMLception")]
         public IActionResult HTMLception()
         {
-            string text = "This is an <em>HTML</em> text. <b>Enjoy yourself!</b>";
+            var text = new HTMLCeptionvIEWmODEL();
+            return View(text);
         }
-        */
+        
         [HttpGet("accounts")]
         public IActionResult Accounts()
         {
