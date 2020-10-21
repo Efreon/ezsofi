@@ -5,15 +5,14 @@ using System.Threading.Tasks;
 
 namespace HelloDIProject.Models
 {
-    public class Printer 
-
+    public class YellowColor :IColor
     {
-        public Printer()
+        public YellowColor()
         {
         }
-        public void Log(string message)
+        public void PrintColor()
         {
-            Console.WriteLine(" --- " + DateTime.Now + " MY PRINTER SAYS --- " + message);
+            Console.WriteLine("It is yellow in color...");
         }
     }
 }

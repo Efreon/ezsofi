@@ -12,18 +12,20 @@ namespace HelloDIProject
     public class ConsoleLoggerMiddleware : IMiddleware
     {
 
-        private Printer MyPrinter;
-        public ConsoleLoggerMiddleware(Printer printer)
+        private readonly Printer MyPrinter;
+        private readonly IColor MyColor;
+        public ConsoleLoggerMiddleware(Printer printer, IColor myColor)
         {
             MyPrinter = printer;
+            MyColor = myColor;
         }
 
 
-        private readonly RequestDelegate _next;
-        public ConsoleLoggerMiddleware(RequestDelegate next)
-        {
-            _next = next;
-        }
+        // private readonly RequestDelegate _next;
+        //public ConsoleLoggerMiddleware(RequestDelegate next)
+        //{
+        //    _next = next;
+        //}
 
         //public Task Invoke(HttpContext httpContext)
         //{
@@ -34,7 +36,7 @@ namespace HelloDIProject
         {
             Console.WriteLine("Hi from the middleware");
             MyPrinter.Log("dasdfasfsd");
-
+            MyColor.PrintColor();
             return next(context);
         }
     }
