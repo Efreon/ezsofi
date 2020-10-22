@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 
 namespace HelloDIProject.Models
 {
-    public class RedColor :IColor
+    public class YellowColorService :IColor
     {
-        public RedColor()
-        { 
+        public YellowColorService()
+        {
         }
         public void PrintColor()
         {
-            Console.WriteLine("It is red in color...");
+            Console.WriteLine("It is yellow in color...");
         }
     }
 }

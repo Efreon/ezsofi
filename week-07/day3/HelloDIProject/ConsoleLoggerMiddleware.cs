@@ -11,20 +11,24 @@ namespace HelloDIProject
     // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
     public class ConsoleLoggerMiddleware : IMiddleware
     {
+        private readonly RequestDelegate _next;
+        // private readonly PrinterService PrinterService;
+        private IColor ColorService { get; set; }
+        //public ConsoleLoggerMiddleware(Printer printer, IColor ColorService)
+        //{
+        //    MyPrinter = printer;
+        //    MyColor = myColor;
+        //}
 
-        private readonly Printer MyPrinter;
-        private readonly IColor MyColor;
-        public ConsoleLoggerMiddleware(Printer printer, IColor myColor)
+        public ConsoleLoggerMiddleware(RequestDelegate next, IColor colorService)
         {
-            MyPrinter = printer;
-            MyColor = myColor;
+            _next = next;
+            ColorService = colorService;
         }
-
-
-        // private readonly RequestDelegate _next;
-        //public ConsoleLoggerMiddleware(RequestDelegate next)
+        //public ConsoleLoggerMiddleware(RequestDelegate next, IEnumerable<IColor> colorService)
         //{
         //    _next = next;
+        //    ColorService = colorService;
         //}
 
         //public Task Invoke(HttpContext httpContext)
@@ -34,19 +38,19 @@ namespace HelloDIProject
         //}
         public Task InvokeAsync(HttpContext context, RequestDelegate next)
         {
-            Console.WriteLine("Hi from the middleware");
-            MyPrinter.Log("dasdfasfsd");
-            MyColor.PrintColor();
+            // Console.WriteLine("Hi from the middleware");
+            // MyPrinter.Log("dasdfasfsd");
+            ColorService.PrintColor();
             return next(context);
         }
     }
 
-    // Extension method used to add the middleware to the HTTP request pipeline.
-    public static class ConsoleLoggerMiddlewareExtensions
-    {
-        public static IApplicationBuilder UseConsoleLoggerMiddleware(this IApplicationBuilder builder)
-        {
-            return builder.UseMiddleware<ConsoleLoggerMiddleware>();
-        }
-    }
+    //// Extension method used to add the middleware to the HTTP request pipeline.
+    //public static class ConsoleLoggerMiddlewareExtensions
+    //{
+    //    public static IApplicationBuilder UseConsoleLoggerMiddleware(this IApplicationBuilder builder)
+    //    {
+    //        return builder.UseMiddleware<ConsoleLoggerMiddleware>();
+    //    }
+    //}
 }

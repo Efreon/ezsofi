@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace HelloDIProject.Models
 {
-    public class Printer 
+    public class PrinterService 
 
     {
-        public Printer()
+        public PrinterService()
         {
         }
         public void Log(string message)
