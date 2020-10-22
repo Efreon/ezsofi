@@ -1,0 +1,13 @@
+﻿@using UsefulUtilities.Models.ViewModels
+@model EmailViewModel
+@{ 
+    var result = Model.Result;
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>UsefulUtilities</title>
+</head>
+<body>
+    @Html.Raw(@result)
+</body>
+</html>

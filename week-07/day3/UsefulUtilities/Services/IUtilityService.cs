@@ -8,5 +8,6 @@ namespace UsefulUtilities.Interfaces
     public interface IUtilityService
     {
         string RandomColor();
+        string ValidateEmail(string email);
     }
 }

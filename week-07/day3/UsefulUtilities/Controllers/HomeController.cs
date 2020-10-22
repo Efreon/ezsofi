@@ -28,17 +28,17 @@ namespace UsefulUtilities.Controllers
         public IActionResult ColoredView()
         {
             // returns randomly colored page
-            var color = service.RandomColor();
-            var model = new ColoredViewModel(color);
+            var model = new ColoredViewModel(service.RandomColor());
             return View(model);
         }
         
-        /*
-        [HttpGet("email")]
-        public IActionResult Index()
+        [HttpGet("useful/email")]
+        public IActionResult EmailView(string email)
         {
-            return View();
+            var model = new EmailViewModel(service.ValidateEmail(email));
+            return View(model);
         }
+        /*
         [HttpGet("ceasar")]
         public IActionResult Index()
         {
