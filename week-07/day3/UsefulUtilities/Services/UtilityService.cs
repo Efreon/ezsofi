@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using UsefulUtilities.Interfaces;
 
 namespace UsefulUtilities.Services
 {
-    public class UtilityService
+    public class UtilityService : IUtilityService
     {
         private readonly List<string> colors;
         private readonly Random random;
