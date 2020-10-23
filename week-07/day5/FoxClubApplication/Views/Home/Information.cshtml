@@ -1,0 +1,48 @@
+﻿@using FoxClubApplication.Models.ViewModels
+@model FoxViewModel
+@{
+    var FoxName = Model.CurrentFox.FoxName;
+    var KnownTricks = Model.CurrentFox.KnownTricks;
+    var FoxFood = Model.CurrentFox.FoxFood;
+    var FoxDrink = Model.CurrentFox.FoxDrink;
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>FoxClubApplication</title>
+</head>
+<body>
+    <div class="information">
+        <a href="information">Information</a>
+    </div>
+    <div class="nutritionStore">
+        <a href="nutritionStore">Nutrition Store</a>
+    </div>
+    <div class="trickCenter">
+        <a href="trickCenter">Trick Center</a>
+    </div>
+    <div class="foximage">
+        <img src="greenfox.png" alt="greenfox" />
+    </div>
+    <div class="fox-intro">
+        <p>This is @FoxName Currently living on @FoxFood[0] and @FoxDrink[0]. He knows @KnownTricks.Count() tricks.</p>
+    </div>
+    <div class="known-tricks">
+        <p>Known tricks</p>
+        <ul id="tricks">
+            @if (@KnownTricks.Count() == 0)
+            {
+                <p>You know no tricks, yet. Go and learn some.</p>
+                ;
+            }
+            else
+            {
+                @foreach (var trick in KnownTricks)
+                {
+                    <li><a href="">@trick</a></li>
+                }
+            }
+
+        </ul>
+    </div>
+</body>
+</html>
