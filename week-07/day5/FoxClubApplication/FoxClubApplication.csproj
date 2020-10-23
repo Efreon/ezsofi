@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Services\" />
+    <Folder Include="Models\Services\Interfaces\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

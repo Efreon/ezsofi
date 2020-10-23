@@ -13,5 +13,16 @@ namespace FoxClubApplication.Controllers
         {
             return View();
         }
+
+        [HttpGet("login")]
+        public IActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost("login")]
+        public IActionResult LoginFox(string name)
+        {
+            return View();
+        }
     }
 }
