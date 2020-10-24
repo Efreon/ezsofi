@@ -12,7 +12,6 @@ namespace FoxClubApplication.Models.ViewModels
         {
             CurrentFox = currentFox;
         }
-
     }
 }
 

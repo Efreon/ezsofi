@@ -10,6 +10,7 @@ namespace FoxClubApplication.Models.Services
     public class FoxServices : IFoxServices
     {
         public List<Fox> Foxes { get; set; }
+        public Fox CurrentFox { get; set; }
 
         public FoxServices()
         {
@@ -24,6 +25,11 @@ namespace FoxClubApplication.Models.Services
         {
             var CurrentFox = Foxes.FirstOrDefault(i => i.FoxName == name);
             return CurrentFox;
+        }
+        public void ChangeNutrition(string food, string drink)
+        {
+            CurrentFox.FoxFood = food;
+            CurrentFox.FoxDrink = drink;
         }
     }
 }

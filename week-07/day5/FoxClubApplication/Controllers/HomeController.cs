@@ -49,9 +49,16 @@ namespace FoxClubApplication.Controllers
             return View(new FoxViewModel(currentfox));
         }
         [HttpGet("nutritionStore")]
-        public IActionResult NutritionStore([FromQuery(Name = "name")] string name)
+        public IActionResult NutritionStore()
         {
             return View();
+        }
+        [HttpPost("nutritionStore")]
+        public IActionResult NutritionStore(string name, string food, string drink)
+        {
+            service.GetCurrentFox(name);
+            service.ChangeNutrition(food, drink);
+            return RedirectToAction("Information");
         }
     }
 }

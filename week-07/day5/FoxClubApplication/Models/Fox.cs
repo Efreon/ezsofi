@@ -9,15 +9,15 @@ namespace FoxClubApplication.Models
     {
         public string FoxName { get; set; }
         public List<string> KnownTricks { get; set; }
-        public List<string> FoxFood { get; set; }
-        public List<string> FoxDrink { get; set; }
+        public string FoxFood { get; set; }
+        public string FoxDrink { get; set; }
 
         public Fox(string name)
         {
             FoxName = name;
             KnownTricks = new List<string>();
-            FoxFood = new List<string> { "french fries"};
-            FoxDrink = new List<string> { "green tea"};
+            FoxFood ="french fries";
+            FoxDrink = "green tea";
         }
     }
 }

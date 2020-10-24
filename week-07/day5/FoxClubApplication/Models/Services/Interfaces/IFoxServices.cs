@@ -9,5 +9,6 @@ namespace FoxClubApplication.Models.Services.Interfaces
     {
         void AddFox(Fox fox);
         Fox GetCurrentFox(string name);
+        void ChangeNutrition(string food, string drink);
     }
 }
