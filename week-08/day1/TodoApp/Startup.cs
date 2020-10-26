@@ -26,8 +26,9 @@ namespace EntityFramework
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddTransient<ITodoServices, TodoServices>();
             services.AddDbContext<ApplicationContext>(builder => builder.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
-            services.AddSingleton< ITodoServices, TodoServices>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

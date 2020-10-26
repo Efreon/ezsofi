@@ -19,6 +19,5 @@ namespace EntityFramework.Models.ViewModels
         {
             Todos = todos;
         }
-
     }
 }

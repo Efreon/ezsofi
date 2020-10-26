@@ -10,5 +10,6 @@ namespace EntityFramework.Models.Services
     {
         void AddTodo(Todo todo);
         List<Todo> InitialTodoList();
+        List<Todo> ReadTodos();
     }
 }

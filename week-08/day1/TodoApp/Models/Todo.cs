@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace EntityFramework.Model
 {
@@ -10,16 +6,24 @@ namespace EntityFramework.Model
     {
         [Key]
         public long Id { get; set; }
+        [Required]
         public string Title { get; set; }
         public bool IsUrgent { get; set; }
         public bool IsDone { get; set; }
-        public Todo(long id, string title)
+
+
+        public Todo(long id, string title, bool isUrgent = false, bool isDone=false)
         {
             Id = id;
             Title = title;
-            IsUrgent = false;
-            IsDone = false;
+            IsUrgent = isUrgent;
+            IsDone = isDone;
         }
-
+        public Todo(string title, bool isUrgent = false, bool isDone = false)
+        {
+            Title = title;
+            IsUrgent = isUrgent;
+            IsDone = isDone;
+        }
     }
 }
