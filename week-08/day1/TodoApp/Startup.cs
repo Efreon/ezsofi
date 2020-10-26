@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EntityFramework.Data;
+using EntityFramework.Models.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -26,6 +27,7 @@ namespace EntityFramework
         {
             services.AddControllersWithViews();
             services.AddDbContext<ApplicationContext>(builder => builder.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            services.AddSingleton< ITodoServices, TodoServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

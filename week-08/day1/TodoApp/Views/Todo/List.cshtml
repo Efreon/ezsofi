@@ -1,8 +1,27 @@
-﻿<html xmlns="http://www.w3.org/1999/xhtml">
+﻿@using EntityFramework.Models.ViewModels
+@model ListViewModel
+@{ 
+    var todos = Model.Todos;
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Todo List</title>
 </head>
 <body>
-    <p>This is my first todo</p>
+    
+    <div class="todos">
+        <div class="title">
+            <h1>Todos for today:</h1>
+        </div>
+        <div class="todo-list">
+            <ul id="todos">
+                @foreach (var todo in todos)
+                {
+                    <li>@todo.Title</li>
+                }
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
