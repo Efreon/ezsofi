@@ -25,25 +25,36 @@ namespace EntityFramework.Controllers
             // service.AddTodo(new Todo("Finish H2 workshop1"));
             // service.AddTodo(new Todo("Finish JPA workshop2"));
             // service.AddTodo(new Todo("Create a CRUD project"));
-            service.AddTodo(new Todo("daily task"));
-            service.AddTodo(new Todo("make the beds", true, true));
-            service.AddTodo(new Todo("do the washing up", true));
-            service.AddTodo(new Todo("clean the bathroom and the kitchen", true, true));
-            service.AddTodo(new Todo("wipe all the surfaces with a cloth",true ));
-            service.AddTodo(new Todo("remove the grease", true, true));
-            service.AddTodo(new Todo("tidy up"));
-            service.AddTodo(new Todo("throw away the rubbish", true, true));
-            service.AddTodo(new Todo("broom", true));
-            service.AddTodo(new Todo("sweep the floor", true, true));
-            service.AddTodo(new Todo("wash the floors", true));
-            service.AddTodo(new Todo("mop", true, true));
-            service.AddTodo(new Todo("vacuum the carpet"));
-            service.AddTodo(new Todo("vacuum cleaner / hoover", true, true));
-            service.AddTodo(new Todo("dust the furniture", true));
+            // service.AddTodo(new Todo("daily task"));
+            // service.AddTodo(new Todo("make the beds", true, true));
+            // service.AddTodo(new Todo("do the washing up", true));
+            // service.AddTodo(new Todo("clean the bathroom and the kitchen", true, true));
+            // service.AddTodo(new Todo("wipe all the surfaces with a cloth",true ));
+            // service.AddTodo(new Todo("remove the grease", true, true));
+            // service.AddTodo(new Todo("tidy up"));
+            // service.AddTodo(new Todo("throw away the rubbish", true, true));
+            // service.AddTodo(new Todo("broom", true));
+            // service.AddTodo(new Todo("sweep the floor", true, true));
+            // service.AddTodo(new Todo("wash the floors", true));
+            // service.AddTodo(new Todo("mop", true, true));
+            // service.AddTodo(new Todo("vacuum the carpet"));
+            // service.AddTodo(new Todo("vacuum cleaner / hoover", true, true));
+            // service.AddTodo(new Todo("dust the furniture", true));
             var todos = service.ReadTodos();
             var model = new ListViewModel(todos);
 
             return View(model);
+        }
+        [HttpGet("add")]
+        public IActionResult AddTodo()
+        {
+            return View();
+        }
+        [HttpPost("add")]
+        public IActionResult AddTodo(string title)
+        {
+            service.AddTodo(new Todo(title));
+            return RedirectToAction("Index");
         }
 
         [HttpGet("list")]
