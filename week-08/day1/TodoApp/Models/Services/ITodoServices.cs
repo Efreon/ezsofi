@@ -11,5 +11,6 @@ namespace EntityFramework.Models.Services
         void AddTodo(Todo todo);
         List<Todo> InitialTodoList();
         List<Todo> ReadTodos();
+        void DeleteTodo(long id);
     }
 }

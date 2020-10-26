@@ -64,6 +64,12 @@ namespace EntityFramework.Controllers
             var model = new ListViewModel(todos);
             return View(model);
         }
+        [HttpPost]
+        public IActionResult DeleteTodo(long id)
+        {
+            service.DeleteTodo(id);
+            return RedirectToAction("Index");
+        }
 
         
     }

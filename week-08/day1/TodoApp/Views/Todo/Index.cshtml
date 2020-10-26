@@ -26,15 +26,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var todo in todos)
-                    {
-                    <tr>
-                        <td>@todo.Id</td>
-                        <td>@todo.Title</td>
-                        <td>@todo.IsUrgent</td>
-                        <td>@todo.IsDone</td>
-                    </tr>
-                    }
+                        @foreach (var todo in todos)
+                        {
+                            <tr>
+                                <td>@todo.Id</td>
+                                <td>@todo.Title</td>
+                                <td>@todo.IsUrgent</td>
+                                <td>@todo.IsDone</td>
+                                <td>
+                                    @using (@Html.BeginForm("Delete", ""))
+                                    {
+                                        <input type="hidden" name="Id" value=@todo.Id />
+                                        <input type="submit" value="Delete" />
+                                    }
+                                </td>
+                            </tr>
+                        }
                 </tbody>
             </table>
         </div>

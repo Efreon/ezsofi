@@ -26,7 +26,11 @@ namespace EntityFramework.Models.Services
             dbContext.Todos.Add(todo);
             dbContext.SaveChanges();
         }
-
+        public void DeleteTodo(long id)
+        {
+            dbContext.Remove(dbContext.Todos.FirstOrDefault(todo => todo.Id == id));
+            dbContext.SaveChanges();
+        }
         public List<Todo> InitialTodoList()
         {
             var Todos = new List<Todo>();
