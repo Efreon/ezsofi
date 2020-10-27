@@ -70,7 +70,16 @@ namespace EntityFramework.Controllers
             service.DeleteTodo(id);
             return RedirectToAction("Index");
         }
-
+        [HttpGet("{id}/edit")]
+        public IActionResult Edit(long id)
+        {
+            return View(new ItemViewModel(service.FindTodo(id)));
+        }
+        [HttpPost("search")]
+        public IActionResult Search(string search)
+        {
+            return View("Index", new ListViewModel(service.Search(search)));
+        }
         
     }
 }

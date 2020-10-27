@@ -11,7 +11,6 @@ namespace EntityFramework.Models.Services
     {
         private readonly ApplicationContext dbContext;
 
-        // public List<Todo> Todos { get; set; }
         public TodoServices(ApplicationContext dbContext)
         {
             this.dbContext = dbContext;
@@ -30,6 +29,26 @@ namespace EntityFramework.Models.Services
         {
             dbContext.Remove(dbContext.Todos.FirstOrDefault(todo => todo.Id == id));
             dbContext.SaveChanges();
+        }
+        public Todo FindTodo(long id)
+        {
+            var CurrentTodo = dbContext.Todos.FirstOrDefault(todo => todo.Id == id);
+            return CurrentTodo;
+        }
+        public List<Todo> Search(string search)
+        {
+            List<Todo> searchedTodos = null;
+            if (!String.IsNullOrEmpty(search))
+            {
+                searchedTodos = dbContext.Todos.Where(todo => todo.Title.ToLower().Contains(search.ToLower())
+                                                          || todo.Description.ToLower().Contains(search.ToLower()))
+                                               .ToList();
+            }
+            else
+            {
+                searchedTodos = dbContext.Todos.ToList();
+            }
+            return searchedTodos;
         }
         public List<Todo> InitialTodoList()
         {
