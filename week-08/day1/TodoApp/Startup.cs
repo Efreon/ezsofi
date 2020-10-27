@@ -27,6 +27,7 @@ namespace EntityFramework
         {
             services.AddControllersWithViews();
             services.AddTransient<ITodoServices, TodoServices>();
+            services.AddTransient<IAssigneeServices, AssigneeServices>();
             services.AddDbContext<ApplicationContext>(builder => builder.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
         }

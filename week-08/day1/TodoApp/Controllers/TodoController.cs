@@ -45,6 +45,7 @@ namespace EntityFramework.Controllers
 
             return View(model);
         }
+
         [HttpGet("add")]
         public IActionResult AddTodo()
         {
@@ -75,11 +76,17 @@ namespace EntityFramework.Controllers
         {
             return View(new ItemViewModel(service.FindTodo(id)));
         }
+        [HttpPost("{id}/edit")]
+        public IActionResult Edit(ItemViewModel itemModel)
+        {
+            service.Edit(itemModel.Todo.Id, itemModel.Todo.Title, itemModel.Todo.IsUrgent, itemModel.Todo.IsDone);
+            return RedirectToAction("Index");
+        }
         [HttpPost("search")]
         public IActionResult Search(string search)
         {
             return View("Index", new ListViewModel(service.Search(search)));
-        }
-        
+        }  
+
     }
 }

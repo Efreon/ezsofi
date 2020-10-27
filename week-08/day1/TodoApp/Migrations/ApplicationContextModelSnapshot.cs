@@ -42,6 +42,26 @@ namespace EntityFramework.Migrations
 
                     b.ToTable("Todos");
                 });
+
+            modelBuilder.Entity("EntityFramework.Models.Assignee", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Assignees");
+                });
 #pragma warning restore 612, 618
         }
     }

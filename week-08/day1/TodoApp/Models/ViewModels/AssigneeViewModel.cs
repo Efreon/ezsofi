@@ -7,11 +7,14 @@ namespace EntityFramework.Models.ViewModels
 {
     public class AssigneeViewModel
     {
-        public List<Assignee> Assignees { get; set; }
-        public AssigneeViewModel(List<Assignee> assignees)
+        public Assignee Assignee { get; set; }
+        public AssigneeViewModel(Assignee assignee)
         {
-            Assignees = assignees;
+            Assignee = assignee;
         }
+        public AssigneeViewModel()
+        {
 
+        }
     }
 }

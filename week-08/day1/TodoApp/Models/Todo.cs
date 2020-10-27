@@ -29,5 +29,9 @@ namespace EntityFramework.Model
             IsDone = isDone;
             Description = description;
         }
+        public Todo()
+        {
+
+        }
     }
 }

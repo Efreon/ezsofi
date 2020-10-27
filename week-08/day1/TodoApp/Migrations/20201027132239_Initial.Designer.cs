@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EntityFramework.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20201027101644_AddDescription")]
-    partial class AddDescription
+    [Migration("20201027132239_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -43,6 +43,26 @@ namespace EntityFramework.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Todos");
+                });
+
+            modelBuilder.Entity("EntityFramework.Models.Assignee", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Assignees");
                 });
 #pragma warning restore 612, 618
         }

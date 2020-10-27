@@ -50,6 +50,16 @@ namespace EntityFramework.Models.Services
             }
             return searchedTodos;
         }
+        public void Edit(long id, string title, bool isUrgent, bool isDone)
+        {
+            var currentTodo = dbContext.Todos.FirstOrDefault(todo => todo.Id == id);
+
+            currentTodo.Title = title;
+            currentTodo.IsUrgent = isUrgent;
+            currentTodo.IsDone = isDone;
+            dbContext.Todos.Update(currentTodo);
+            dbContext.SaveChanges();
+        }
         public List<Todo> InitialTodoList()
         {
             var Todos = new List<Todo>();

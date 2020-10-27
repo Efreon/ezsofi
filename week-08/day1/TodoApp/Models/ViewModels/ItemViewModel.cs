@@ -13,5 +13,9 @@ namespace EntityFramework.Models.ViewModels
         {
             Todo = todo;
         }
+        public ItemViewModel()
+        {
+
+        }
     }
 }
