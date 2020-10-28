@@ -1,21 +1,27 @@
 ﻿@using EntityFramework.Models.ViewModels
+@model AssigneeViewModel
+@{
+    var assignee = Model.Assignee;
+}
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Add Assignee</title>
 </head>
 <body>
-    <div class="add-new-assignee">
+    <div class="add-new-todo">
         <h1>Add new assignee</h1>
     </div>
-    <div class="add-form">
-        <form action="" method="post">
-            <label for="Name">Assignee name</label>
-            <input type="text" id="Name" name="name" required />
-            <label for="Email">Assignee email</label>
-            <input type="email" id="Email" name="email" required />
-            <input type="submit" value="Add assignee" />
-        </form>
-    </div>
+    <div class="add">
+        @using (Html.BeginForm("AddAssignee", "", FormMethod.Post))
+        {
+            @Html.LabelFor(a => a.Assignee.Name, "Name")
+            @Html.TextBoxFor(a => a.Assignee.Name, null, new { @Placeholder = "Assignee name" })
+
+            @Html.LabelFor(a => a.Assignee.Email, "Email")
+            @Html.TextBoxFor(a => a.Assignee.Email, null, new { @Placeholder = "Assignee email" })
+            <input type="submit" value="Add Assignee" />
+        }
+        </div>
 </body>
 </html>

@@ -12,7 +12,6 @@ namespace EntityFramework.Model
         public bool IsUrgent { get; set; }
         public bool IsDone { get; set; }
         public string Description { get; set; }
-        public long AssigneId { get; set; }
 
 
         public Todo(long id, string title, bool isUrgent = false, bool isDone=false, string description="")
