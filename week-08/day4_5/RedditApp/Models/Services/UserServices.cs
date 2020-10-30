@@ -31,5 +31,9 @@ namespace RedditApp.Models.Services
         {
             return dbContext.Users.FirstOrDefault(i => i.UserId == id);
         }
+        public List<User> AllUser()
+        {
+            return dbContext.Users.ToList();
+        }
     }
 }

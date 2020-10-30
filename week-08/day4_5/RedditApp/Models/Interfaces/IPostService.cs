@@ -10,5 +10,6 @@ namespace RedditApp.Models.Interfaces
     {
         public void NewPost(Post post);
         public Post FindPost(string title, string url);
+        public List<Post> AllPosts();
     }
 }

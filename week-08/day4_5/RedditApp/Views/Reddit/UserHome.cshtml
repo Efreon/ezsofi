@@ -1,24 +1,44 @@
 ﻿@using RedditApp.Models.ViewModels
-@model UserViewModel
-@{ 
-    var user = Model.CurrentUser;
-}
+@model UserPostViewModel
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
 </head>
 <body>
-    @if (!@user.UserName.Any())
-    {
-    <p>"Your password is incorrect"</p>
-    }
-    Hello @user.UserName
+    Hello @Model.CurrentUser.UserName
 
     <div class="new-post">
-        <a href="newpost/?id=@user.UserId">Submit new post</a>
+        <a href="newpost/?id=@Model.CurrentUser.UserId">Submit new post</a>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link href="~/styles.css" rel="stylesheet" type="text/css" />
     </div>
     <div>
         <h1>Trending Posts</h1>
     </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Score</th>
+                <th>Upvote</th>
+                <th>DownVote</th>
+                <th>Title</th>
+                <th>Date of creation</th>
+                <th>Created by</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var post in Model.AllPosts)
+            {
+            <tr>
+                <td>@post.PostScore </td>
+                <td>+</td>
+                <td>-</td>
+                <td>@post.PostTitle </td>
+                <td>@post.PostCreatedAt </td>
+                <td>@post.User.UserName</td>
+            </tr>
+            }
+        </tbody>
+    </table>
 </body>
 </html>

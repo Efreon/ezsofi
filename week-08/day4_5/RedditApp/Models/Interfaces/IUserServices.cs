@@ -11,5 +11,6 @@ namespace RedditApp.Models.Interfaces
         public void CreateUser(User user);
         public User Login(string username, string pwd);
         public User FindUser(double id);
+        public List<User> AllUser();
     }
 }

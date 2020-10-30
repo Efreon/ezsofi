@@ -3,6 +3,7 @@ using RedditApp.Database;
 using RedditApp.Entities;
 using RedditApp.Models.Interfaces;
 using RedditApp.Models.ViewModels;
+using System.Linq;
 
 namespace RedditApp.Controllers
 {
@@ -37,7 +38,7 @@ namespace RedditApp.Controllers
             currentPost.User = userServices.FindUser(id);
 
             postService.NewPost(currentPost);
-            return View("UserHome", new UserViewModel(userServices.FindUser(id)));
+            return View("UserHome", new UserPostViewModel(userServices.FindUser(id), userServices.AllUser(), postService.AllPosts()));
         }
         #endregion
 
@@ -58,13 +59,15 @@ namespace RedditApp.Controllers
         {
             return View();
         }
-        [HttpPost("userhome")]
+        [HttpPost("userhome/{id}")]
         public IActionResult Login(string username, string pwd)
         {
+            var allPosts = postService.AllPosts();
+            var allUser = userServices.AllUser();
             var currentUser = userServices.Login(username, pwd);
             if (currentUser != null)
             {
-                return View("UserHome", new UserViewModel(currentUser));
+                return View("UserHome", new UserPostViewModel(currentUser, allUser, allPosts));
             }
             else
             {
