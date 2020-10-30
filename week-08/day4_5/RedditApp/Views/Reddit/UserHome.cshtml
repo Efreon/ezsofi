@@ -1,0 +1,24 @@
+﻿@using RedditApp.Models.ViewModels
+@model UserViewModel
+@{ 
+    var user = Model.CurrentUser;
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    @if (!@user.UserName.Any())
+    {
+    <p>"Your password is incorrect"</p>
+    }
+    Hello @user.UserName
+
+    <div class="new-post">
+        <a href="newpost/?id=@user.UserId">Submit new post</a>
+    </div>
+    <div>
+        <h1>Trending Posts</h1>
+    </div>
+</body>
+</html>

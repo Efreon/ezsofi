@@ -17,6 +17,7 @@ namespace RedditApp.Entities
         public double PostScore { get; set; }
         [DataType(DataType.Date)]
         public DateTime PostCreatedAt { get; set; }
+        public User User { get; set; }
         public Post()
         {
 

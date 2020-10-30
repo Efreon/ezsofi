@@ -6,7 +6,6 @@ namespace RedditApp.Database
     public class RedditDbContext :DbContext
     {
         public DbSet<Post> Posts { get; set; }
-        public DbSet<Topic> Topics { get; set; }
         public DbSet<User> Users { get; set; }
         public RedditDbContext(DbContextOptions options) : base(options)
         {

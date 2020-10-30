@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace RedditApp.Models.Interfaces
 {
-    public interface ILoginServices
+    public interface IPostService
     {
-        void CreateUser(User user);
+        public void NewPost(Post post);
+        public Post FindPost(string title, string url);
     }
 }

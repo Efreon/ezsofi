@@ -27,7 +27,8 @@ namespace RedditApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddTransient<ILoginServices, LoginServices>();
+            services.AddTransient<IUserServices, UserServices>();
+            services.AddTransient<IPostService, PostServices>();
             services.AddDbContext<RedditDbContext>(builder => builder.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
         }
 

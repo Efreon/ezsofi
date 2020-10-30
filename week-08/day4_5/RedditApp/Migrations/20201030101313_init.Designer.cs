@@ -10,8 +10,8 @@ using RedditApp.Database;
 namespace RedditApp.Migrations
 {
     [DbContext(typeof(RedditDbContext))]
-    [Migration("20201029092527_initialSetup")]
-    partial class initialSetup
+    [Migration("20201030101313_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,35 +42,14 @@ namespace RedditApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long?>("TopicId")
-                        .HasColumnType("bigint");
-
                     b.Property<long?>("UserId")
                         .HasColumnType("bigint");
 
                     b.HasKey("PostId");
 
-                    b.HasIndex("TopicId");
-
                     b.HasIndex("UserId");
 
                     b.ToTable("Posts");
-                });
-
-            modelBuilder.Entity("RedditApp.Entities.Topic", b =>
-                {
-                    b.Property<long>("TopicId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("TopicName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("TopicId");
-
-                    b.ToTable("Topics");
                 });
 
             modelBuilder.Entity("RedditApp.Entities.User", b =>
@@ -95,18 +74,11 @@ namespace RedditApp.Migrations
 
             modelBuilder.Entity("RedditApp.Entities.Post", b =>
                 {
-                    b.HasOne("RedditApp.Entities.Topic", null)
-                        .WithMany("Posts")
-                        .HasForeignKey("TopicId");
-
-                    b.HasOne("RedditApp.Entities.User", null)
+                    b.HasOne("RedditApp.Entities.User", "User")
                         .WithMany("Posts")
                         .HasForeignKey("UserId");
-                });
 
-            modelBuilder.Entity("RedditApp.Entities.Topic", b =>
-                {
-                    b.Navigation("Posts");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("RedditApp.Entities.User", b =>
