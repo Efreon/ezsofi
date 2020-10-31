@@ -2,15 +2,15 @@
 @model UserPostViewModel
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
+    <title>UserHome</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="~/styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     Hello @Model.CurrentUser.UserName
 
     <div class="new-post">
         <a href="newpost/?id=@Model.CurrentUser.UserId">Submit new post</a>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-        <link href="~/styles.css" rel="stylesheet" type="text/css" />
     </div>
     <div>
         <h1>Trending Posts</h1>
@@ -27,16 +27,30 @@
             </tr>
         </thead>
         <tbody>
-            @foreach(var post in Model.AllPosts)
+            @foreach (var post in Model.AllPosts)
             {
-            <tr>
-                <td>@post.PostScore </td>
-                <td>+</td>
-                <td>-</td>
-                <td>@post.PostTitle </td>
-                <td>@post.PostCreatedAt </td>
-                <td>@post.User.UserName</td>
-            </tr>
+                <tr>
+                    <td>@post.PostScore </td>
+                    <td>
+                        @using (Html.BeginForm("UpVote", ""))
+                        {
+                            <input type="hidden" name="userid" value="@Model.CurrentUser.UserId" />
+                            <input type="hidden" name="post" value="@post.PostId" />
+                            <a href="upvote/?userid=@Model.CurrentUser.UserId/?postid=@post.PostId">+</a>
+                        }
+                    </td>
+                    <td>
+                        @using (Html.BeginForm("DownVote", ""))
+                        {
+                            <input type="hidden" name="userid" value="@Model.CurrentUser.UserId" />
+                            <input type="hidden" name="post" value="@post.PostId" />
+                            <a href="downvote/?userid=@Model.CurrentUser.UserId/?postid=@post.PostId">-</a>
+                        }
+                    </td>
+                    <td>@post.PostTitle </td>
+                    <td>@post.PostCreatedAt </td>
+                    <td>@post.User.UserName</td>
+                </tr>
             }
         </tbody>
     </table>

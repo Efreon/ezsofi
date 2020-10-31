@@ -25,10 +25,15 @@ namespace RedditApp.Models.Services
         {
             return dbContext.Posts.ToList();
         }
-        public Post FindPost(string title, string url)
+        public void UpVote(double postid, double userid)
         {
-            CurrenPost = dbContext.Posts.FirstOrDefault(i => i.PostTitle == title && i.PostUrl == url);
-            return CurrenPost;
+            dbContext.Posts.FirstOrDefault(p => p.PostId == postid).PostScore++;
+            dbContext.SaveChanges();
+        }
+        public void DownVote(double postid)
+        {
+            dbContext.Posts.FirstOrDefault(p => p.PostId == postid).PostScore--;
+            dbContext.SaveChanges();
         }
     }
 }

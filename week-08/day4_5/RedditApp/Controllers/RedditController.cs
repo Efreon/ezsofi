@@ -21,10 +21,10 @@ namespace RedditApp.Controllers
         }
 
         #region Post services
-        [HttpGet("index")]
+        [HttpGet("")]
         public IActionResult Index()
         {
-            return View();
+            return View("Login");
         }
         [HttpGet("newpost")]
         public IActionResult NewPost()
@@ -39,6 +39,12 @@ namespace RedditApp.Controllers
 
             postService.NewPost(currentPost);
             return View("UserHome", new UserPostViewModel(userServices.FindUser(id), userServices.AllUser(), postService.AllPosts()));
+        }
+        [HttpGet("upvote")]
+        public IActionResult UpVote(double userid, double postid)
+        {
+            postService.UpVote(userid, postid);
+            return View("UserHome");
         }
         #endregion
 
@@ -59,20 +65,26 @@ namespace RedditApp.Controllers
         {
             return View();
         }
-        [HttpPost("userhome/{id}")]
+        [HttpPost("userhome")]
         public IActionResult Login(string username, string pwd)
         {
-            var allPosts = postService.AllPosts();
-            var allUser = userServices.AllUser();
             var currentUser = userServices.Login(username, pwd);
             if (currentUser != null)
             {
-                return View("UserHome", new UserPostViewModel(currentUser, allUser, allPosts));
+                return RedirectToAction("UserHome", "Reddit", new { userid = currentUser.UserId});
             }
             else
             {
                 return View("LoginFailed");
             }  
+        }
+        [HttpGet("userhome")]
+        public IActionResult UserHome(double userid)
+        {
+            var allPosts = postService.AllPosts();
+            var allUser = userServices.AllUser();
+            var currentUser = userServices.FindUser(userid);
+            return View("UserHome", new UserPostViewModel(currentUser, allUser, allPosts));
         }
         #endregion
     }
