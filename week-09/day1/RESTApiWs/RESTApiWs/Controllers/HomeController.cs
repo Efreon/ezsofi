@@ -1,22 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using RESTApiWs.Models;
 using RESTApiWs.Services;
 
 namespace RESTApiWs.Controllers
 {
     [ApiController]
     [Route("/")]
-    public class HomeController : Controller
+    public class HomeController : ControllerBase
     {
-        public APIService ApiService { get; set; }
+        public APIService apiService { get; set; }
         public HomeController(APIService apiService)
         {
-            ApiService = apiService;
+            this.apiService = apiService;
         }
 
         public IActionResult Index()
@@ -30,12 +25,55 @@ namespace RESTApiWs.Controllers
         {
             if (input.HasValue)
             {
-                return Json(new { received = input, result = 2 * input });
+                return new JsonResult(new { received = input, result = 2 * input });
             }
             else
             {
-                return Json(new { error = "Please provide an input" });
+                return new JsonResult(new { error = "Please provide an input!" });
             }
         }
+
+        // GET /greeter
+        [HttpGet("greeter")]
+        public ActionResult Greeter(string name, string title)
+        {
+            if (String.IsNullOrEmpty(name) && String.IsNullOrEmpty(title))
+            {
+                return BadRequest(new { error = "Please provide a name and a title!" });
+            }
+            else if (String.IsNullOrEmpty(name))
+            {
+                return BadRequest(new { error = "Please provide a name!" });
+            }
+            else if (String.IsNullOrEmpty(title))
+            {
+                return BadRequest(new { error = "Please provide a title!" });
+            }
+            else
+            {
+                return new JsonResult(new { welcome_message = $"Oh, hi there {name}, my dear {title}!" });
+            }
+        }
+        [HttpGet("appenda/{appendable}")]
+        public ActionResult AppendA(string appendable)
+        {
+            if (!String.IsNullOrEmpty(appendable))
+            {
+                return new JsonResult(new { appended = appendable + "a" });
+            }
+            else
+            {
+                return BadRequest();
+                // return StatusCode(404);
+            }
+
+        }
+        //[HttpPost("dountil/{operation}")]
+        //public ActionResult DoUntil(string operation, [FromBody] Calculation calculation)
+        //{
+
+        //    apiService.Calculate();
+
+        //}
     }
 }
