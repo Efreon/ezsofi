@@ -15,5 +15,6 @@ namespace RESTApiWs.Services
         public int? SumArray(int[] numbers);
         public int? MultiplyArray(int[] numbers);
         public int[] DoubleArray(int[] numbers);
+        public string YodaSpeak(string text);
     }
 }

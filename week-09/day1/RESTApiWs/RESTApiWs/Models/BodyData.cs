@@ -11,6 +11,7 @@ namespace RESTApiWs.Models
 
         public string What { get; set; }
         public int[] Numbers { get; set; }
+        public string Text { get; set; }
 
 
     }

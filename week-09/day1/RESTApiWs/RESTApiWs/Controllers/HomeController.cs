@@ -118,10 +118,17 @@ namespace RESTApiWs.Controllers
                 return new JsonResult(new { error = "Please provide what to do with the numbers!" });
             }
         }
+
         [HttpGet("log")]
         public ActionResult GetLogs()
         {
             return new JsonResult(new { entries = logService.GetLogs(), entry_count = logService.GetLogs().Count });
+        }
+
+        [HttpPost("sith")]
+        public ActionResult YodaSpeak([FromBody] BodyData data)
+        {
+            return new JsonResult(new { sith_text = apiService.YodaSpeak(data.Text) });
         }
     }
 }
