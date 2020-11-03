@@ -1,5 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Server.Kestrel.Core.Features;
+using RESTApiWs.Models;
 using RESTApiWs.Services;
 
 namespace RESTApiWs.Controllers
@@ -8,8 +10,8 @@ namespace RESTApiWs.Controllers
     [Route("/")]
     public class HomeController : ControllerBase
     {
-        public APIService apiService { get; set; }
-        public HomeController(APIService apiService)
+        private IAPIService apiService { get; set; }
+        public HomeController(IAPIService apiService)
         {
             this.apiService = apiService;
         }
@@ -64,16 +66,24 @@ namespace RESTApiWs.Controllers
             else
             {
                 return BadRequest();
-                // return StatusCode(404);
             }
 
         }
-        //[HttpPost("dountil/{operation}")]
-        //public ActionResult DoUntil(string operation, [FromBody] Calculation calculation)
-        //{
-
-        //    apiService.Calculate();
-
-        //}
+        [HttpPost("dountil/{operation}")]
+        public ActionResult DoUntil(string operation, [FromBody] BodyData data )
+        {
+            if (data.Until.HasValue && operation == "sum")
+            {
+                return new JsonResult(new { result = apiService.Sum((int)data.Until) });
+            }
+            else if (data.Until.HasValue && operation == "factor")
+            {
+                return new JsonResult(new { result = apiService.Factorial((int)data.Until) });
+            }
+            else
+            {
+                return StatusCode(400, new { error = "Please provide a number!" });
+            }
+        }
     }
 }
