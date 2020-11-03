@@ -28,6 +28,7 @@ namespace RESTApiWs
             services.AddControllers();
             services.AddTransient<IAPIService, APIService>();
             services.AddTransient<ILogService, LogService>();
+            services.AddTransient<IHunCamService, HunCamService>();
             services.AddDbContext<ApiDbContext>(builder => builder.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
         }
 

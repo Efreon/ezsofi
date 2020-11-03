@@ -12,10 +12,13 @@ namespace RESTApiWs.Controllers
     {
         private IAPIService apiService { get; set; }
         private ILogService logService { get; set; }
-        public HomeController(IAPIService apiService, ILogService logService)
+        private IHunCamService hunCamService { get; set; }
+
+        public HomeController(IAPIService apiService, ILogService logService, IHunCamService hunCamService)
         {
             this.apiService = apiService;
             this.logService = logService;
+            this.hunCamService = hunCamService;
         }
 
         public IActionResult Index()
@@ -61,6 +64,7 @@ namespace RESTApiWs.Controllers
                 return new JsonResult(new { welcome_message = $"Oh, hi there {name}, my dear {title}!" });
             }
         }
+        
         [HttpGet("appenda/{appendable}")]
         public ActionResult AppendA(string appendable)
         {
@@ -94,6 +98,7 @@ namespace RESTApiWs.Controllers
                 return StatusCode(400, new { error = "Please provide a number!" });
             }
         }
+        
         [HttpPost("arrays")]
         public ActionResult ArrayHandler([FromBody] BodyData data)
         {
@@ -128,7 +133,28 @@ namespace RESTApiWs.Controllers
         [HttpPost("sith")]
         public ActionResult YodaSpeak([FromBody] BodyData data)
         {
-            return new JsonResult(new { sith_text = apiService.YodaSpeak(data.Text) });
+            if (String.IsNullOrEmpty(data.Text))
+            {
+                return new JsonResult(new { error = "Feed me some text you have to, padawan young you are. Hmmm." });
+            }
+            else
+            {
+                return new JsonResult(new { sith_text = apiService.YodaSpeak(data.Text) });
+            }
+            
+        }
+        
+        [HttpPost("translate")]
+        public ActionResult HungarianCamellzer([FromBody] HunCam hunCamData)
+        {
+            if (String.IsNullOrEmpty(hunCamData.Text) || String.IsNullOrEmpty(hunCamData.Lang))
+            {
+                return new JsonResult(new { error = "I can't translate that!" });
+            }
+            else
+            {
+                return new JsonResult(new { translated = hunCamService.Camellizer(hunCamData.Text, hunCamData.Lang), lang = "teve" });
+            }
         }
     }
 }
