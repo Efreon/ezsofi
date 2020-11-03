@@ -9,8 +9,11 @@ namespace RESTApiWs.Services
 {
     public interface IAPIService
     {
-        // public JsonResult Calculate(string operation, BodyData data);
+
         public int? Sum(int? num);
         public int? Factorial(int? number);
+        public int? SumArray(int[] numbers);
+        public int? MultiplyArray(int[] numbers);
+        public int[] DoubleArray(int[] numbers);
     }
 }

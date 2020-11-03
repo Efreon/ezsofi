@@ -11,9 +11,11 @@ namespace RESTApiWs.Controllers
     public class HomeController : ControllerBase
     {
         private IAPIService apiService { get; set; }
-        public HomeController(IAPIService apiService)
+        private ILogService logService { get; set; }
+        public HomeController(IAPIService apiService, ILogService logService)
         {
             this.apiService = apiService;
+            this.logService = logService;
         }
 
         public IActionResult Index()
@@ -25,8 +27,10 @@ namespace RESTApiWs.Controllers
         [HttpGet("doubling")]
         public ActionResult Doubling(int? input)
         {
+
             if (input.HasValue)
             {
+                logService.LogRequest("doubling", $"input = {input}");
                 return new JsonResult(new { received = input, result = 2 * input });
             }
             else
@@ -53,6 +57,7 @@ namespace RESTApiWs.Controllers
             }
             else
             {
+                logService.LogRequest("greeter", $"name = {name}, title = {title}");
                 return new JsonResult(new { welcome_message = $"Oh, hi there {name}, my dear {title}!" });
             }
         }
@@ -61,6 +66,7 @@ namespace RESTApiWs.Controllers
         {
             if (!String.IsNullOrEmpty(appendable))
             {
+                logService.LogRequest("appenda", $"appendable = {appendable}");
                 return new JsonResult(new { appended = appendable + "a" });
             }
             else
@@ -69,21 +75,53 @@ namespace RESTApiWs.Controllers
             }
 
         }
+
         [HttpPost("dountil/{operation}")]
-        public ActionResult DoUntil(string operation, [FromBody] BodyData data )
+        public ActionResult DoUntil(string operation, [FromBody] BodyData data)
         {
             if (data.Until.HasValue && operation == "sum")
             {
+                logService.LogRequest("dountil", $"operation = {operation}, data = {data}");
                 return new JsonResult(new { result = apiService.Sum((int)data.Until) });
             }
             else if (data.Until.HasValue && operation == "factor")
             {
+                logService.LogRequest("dountil", $"operation = {operation}, data = {data}");
                 return new JsonResult(new { result = apiService.Factorial((int)data.Until) });
             }
             else
             {
                 return StatusCode(400, new { error = "Please provide a number!" });
             }
+        }
+        [HttpPost("arrays")]
+        public ActionResult ArrayHandler([FromBody] BodyData data)
+        {
+
+            if (data.What == "sum")
+            {
+                logService.LogRequest("arrays", $"what = {data.What}, data = {data.Numbers}");
+                return new JsonResult(new { result = apiService.SumArray(data.Numbers) });
+            }
+            else if (data.What == "multiply")
+            {
+                logService.LogRequest("arrays", $"what = {data.What}, data = {data.Numbers}");
+                return new JsonResult(new { results = apiService.MultiplyArray(data.Numbers) });
+            }
+            else if (data.What == "double")
+            {
+                logService.LogRequest("arrays", $"what = {data.What}, data = {data.Numbers}");
+                return new JsonResult(new { result = apiService.DoubleArray(data.Numbers) });
+            }
+            else
+            {
+                return new JsonResult(new { error = "Please provide what to do with the numbers!" });
+            }
+        }
+        [HttpGet("log")]
+        public ActionResult GetLogs()
+        {
+            return new JsonResult(new { entries = logService.GetLogs(), entry_count = logService.GetLogs().Count });
         }
     }
 }

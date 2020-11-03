@@ -8,8 +8,10 @@ namespace RESTApiWs.Models
     public class BodyData
     {
         public int? Until {get; set;}
-        public string? Operation {get; set;}
-        public int? Result { get; set; }
+
+        public string What { get; set; }
+        public int[] Numbers { get; set; }
+
 
     }
 }

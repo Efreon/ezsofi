@@ -33,29 +33,34 @@ namespace RESTApiWs.Services
             }
             return number * Factorial(number - 1);
         }
-        //public JsonResult Calculate(string operation, BodyData data)
-        //{
-        //    if (operation == "sum")
-        //    {
-        //        if ( == 1)
-        //        {
-        //            return 1;
-        //        }
-        //        else
-        //        {
-        //            return n + (n - 1);
-        //        }
-        //    }
-        //    else if (operation == "factor")
-        //    {
-                
-        //        for (int i = 1; i < (int)data.Until; i++)
-        //        {
-        //            result *= i;
-        //        }
-        //    }
-        //    return new JsonResult(new { Result = result });
-        //}
+        
+        public int? SumArray(int[] numbers)
+        {
+            int? result = 0;
+            for (int i=0; i< numbers.Length; i++)
+            {
+                result += numbers[i];
+            }
+            return result;
+        }
+        public int? MultiplyArray(int[] numbers)
+        {
+            int? result = numbers[0];
+            for (int i = 1; i < numbers.Length; i++)
+            {
+                result *= numbers[i];
+            }
+            return result;
+        }
+        public int[] DoubleArray(int[] numbers)
+        {
+            int[] resultArray = new int[numbers.Length];
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                resultArray[i] = numbers[i]*2;
+            }
+            return resultArray;
+        }
 
     }
 }
