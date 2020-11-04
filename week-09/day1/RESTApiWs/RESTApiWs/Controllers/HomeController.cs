@@ -77,7 +77,6 @@ namespace RESTApiWs.Controllers
             {
                 return BadRequest();
             }
-
         }
 
         [HttpPost("dountil/{operation}")]
@@ -95,32 +94,38 @@ namespace RESTApiWs.Controllers
             }
             else
             {
-                return StatusCode(400, new { error = "Please provide a number!" });
+                return BadRequest(new { error = "Please provide a number!" });
             }
         }
         
         [HttpPost("arrays")]
         public ActionResult ArrayHandler([FromBody] BodyData data)
         {
-
-            if (data.What == "sum")
+            if (!String.IsNullOrEmpty(data.What) && data.Numbers.Length > 0)
             {
-                logService.LogRequest("arrays", $"what = {data.What}, data = {data.Numbers}");
-                return new JsonResult(new { result = apiService.SumArray(data.Numbers) });
-            }
-            else if (data.What == "multiply")
-            {
-                logService.LogRequest("arrays", $"what = {data.What}, data = {data.Numbers}");
-                return new JsonResult(new { results = apiService.MultiplyArray(data.Numbers) });
-            }
-            else if (data.What == "double")
-            {
-                logService.LogRequest("arrays", $"what = {data.What}, data = {data.Numbers}");
-                return new JsonResult(new { result = apiService.DoubleArray(data.Numbers) });
+                if (data.What == "sum")
+                {
+                    logService.LogRequest("arrays", $"what = {data.What}, data = {data.Numbers}");
+                    return new JsonResult(new { result = apiService.SumArray(data.Numbers) });
+                }
+                else if (data.What == "multiply")
+                {
+                    logService.LogRequest("arrays", $"what = {data.What}, data = {data.Numbers}");
+                    return new JsonResult(new { results = apiService.MultiplyArray(data.Numbers) });
+                }
+                else if (data.What == "double")
+                {
+                    logService.LogRequest("arrays", $"what = {data.What}, data = {data.Numbers}");
+                    return new JsonResult(new { result = apiService.DoubleArray(data.Numbers) });
+                }
+                else
+                {
+                    return new JsonResult(new { error = "Please provide what to do with the numbers!" });
+                }
             }
             else
             {
-                return new JsonResult(new { error = "Please provide what to do with the numbers!" });
+                return BadRequest (new { error = "Please provide what to do with the numbers!" });
             }
         }
 
@@ -135,7 +140,7 @@ namespace RESTApiWs.Controllers
         {
             if (String.IsNullOrEmpty(data.Text))
             {
-                return new JsonResult(new { error = "Feed me some text you have to, padawan young you are. Hmmm." });
+                return BadRequest (new { error = "Feed me some text you have to, padawan young you are. Hmmm." });
             }
             else
             {
@@ -149,7 +154,7 @@ namespace RESTApiWs.Controllers
         {
             if (String.IsNullOrEmpty(hunCamData.Text) || String.IsNullOrEmpty(hunCamData.Lang))
             {
-                return new JsonResult(new { error = "I can't translate that!" });
+                return BadRequest(new { error = "I can't translate that!" });
             }
             else
             {
