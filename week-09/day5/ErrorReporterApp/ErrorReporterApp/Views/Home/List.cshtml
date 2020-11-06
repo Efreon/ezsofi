@@ -1,0 +1,36 @@
+﻿@using ErrorReporterApp.Models.ViewModels
+@model ViewModel
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Ticket List</title>
+</head>
+<body>
+    <div class="tickets">
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Reporter</th>
+                    <th>Manufacturer</th>
+                    <th>Serial Number</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var ticket in Model.Tickets)
+                {
+                <tr>
+                    <td>@ticket.TicketId</td>
+                    <td>@ticket.Reporter.ReporterName</td>
+                    <td>@ticket.Manufacturer</td>
+                    <td>@ticket.SerialNumber</td>
+                    <td>@ticket.Description</td>
+                    <td>@ticket.TicketCreatedAt</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

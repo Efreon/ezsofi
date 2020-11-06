@@ -1,0 +1,37 @@
+﻿@using ErrorReporterApp.Models.ViewModels
+@using System.Globalization
+@model ViewModel
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Ticket Reporte</title>
+</head>
+<body>
+    <div class="new-ticket">
+        <h1> Error Ticket Reporter</h1>
+        <h3> Do you have any issues with the tools? Create a new ticket!</h3>
+    </div>
+    <div class="new-ticket-form">
+        <form action="report" method="POST">
+            <label>Name</label>
+            <select name="reporterId" id="reporter">
+                @foreach (var reporter in Model?.Reporters.ToList())
+                {
+                    <option name="reporterId" value="@reporter.ReporterId">@reporter.ReporterName</option>
+                }
+            </select>
+
+            <label> Manufacturer</label>
+            <input type="text" id="manufacturer" name="manufacturer" required />
+
+            <label> Serial#</label>
+            <input type="number" id="serialNumber" name="serialNumber" required />
+
+            <label>Description</label>
+            <input type="text" id="description" name="description" required />
+
+            <input type="submit" value="Report" />
+        </form>
+    </div>
+</body>
+</html>
