@@ -2,6 +2,7 @@
 using ErrorReporterApp.Entities;
 using ErrorReporterApp.Models.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -24,6 +25,16 @@ namespace ErrorReporterApp.Models.Services
         public List<Ticket> AllTickets()
         {
             return dbContext.Tickets.ToList();
+        }
+        public void DeleteTicket(long id)
+        {
+            dbContext.Remove(dbContext.Tickets.FirstOrDefault(a => a.TicketId == id));
+            dbContext.SaveChanges();
+        }
+        public List<Ticket> FilterQuery(string manufacturer, string reporter)
+        {
+            return dbContext.Tickets.Where(t => t.Manufacturer == manufacturer || t.Reporter.ReporterName == reporter)
+                                    .ToList();
         }
     }
 }

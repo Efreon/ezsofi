@@ -36,5 +36,32 @@ namespace ErrorReporterApp.Controllers
         {
             return View("list", new ViewModel(ticketService.AllTickets(), reporterService.AllReporters()));
         }
+
+        [HttpPost("complete/{id}")]
+        // This endpoint should delete the specified ticket if the request's body contains "secret" : "voala"
+        public IActionResult DeleteTicket([FromBody] BodyData json, [FromRoute] long? id)
+        {
+            if (id.HasValue && json.Secret == "voala")
+            {
+                ticketService.DeleteTicket((long)id);
+                return Ok(new { message = $"Deleted ticket nr.{id}"});
+            }
+            else
+            {
+                return BadRequest(new { message = $"Can not delete the ticket nr. {id} . Secret is not voala"});
+            }
+        }
+        [HttpGet("list/query")]
+        public IActionResult FilterQuery([FromQuery] string manufacturer, [FromQuery] string reporter)
+        {
+            if (!string.IsNullOrEmpty(manufacturer) || !string.IsNullOrEmpty(reporter))
+            {
+                return Ok(new { result = "ok", tickets = ticketService.FilterQuery(manufacturer, reporter) });
+            }
+            else
+            {
+                return BadRequest(new { message = "Invalid input, can't return any tickets" });
+            }
+        }
     }
 }
