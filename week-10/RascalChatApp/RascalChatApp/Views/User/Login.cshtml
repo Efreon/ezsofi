@@ -1,0 +1,23 @@
+﻿@using RascalChatApp.Models.ViewModels
+@model ChatViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<h1> Login </h1>
+
+@using (Html.BeginForm("login", "User", FormMethod.Post))
+{
+<div class="input-container">
+    @Html.Label("Username:")
+    @Html.TextBox("loginName")
+</div>
+
+<div class="input-container">
+    @Html.Label("Password:")
+    @Html.Password("password")
+</div>
+
+<input type="submit" value="Login" />
+}
