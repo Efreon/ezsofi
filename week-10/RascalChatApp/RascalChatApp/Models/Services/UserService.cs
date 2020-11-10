@@ -1,25 +1,45 @@
-﻿using RascalChatApp.Database;
+﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using RascalChatApp.Entities;
 using RascalChatApp.Models.Interfaces;
-using System.Linq;
+using System.Net.Http;
+using System.Text;
 
 namespace RascalChatApp.Models.Services
 {
     public class UserService : IUserService
     {
-        private readonly ChatDbContext dbContext;
-        public UserService(ChatDbContext dbContext)
+        private IHttpClientFactory clientFactory { get; set; }
+        public HttpClient client;
+        public string BaseAdress = "https://rascals-chat.herokuapp.com/api/user/";
+        public UserService([FromServices] IHttpClientFactory clientFactory)
         {
-            this.dbContext = dbContext;
+            client = clientFactory.CreateClient();
         }
-        public void RegisterUser(string loginName, string password)
+        public User Register(User user)
         {
-            dbContext.Users.Add(new User(loginName, password));
-            dbContext.SaveChanges();
+            var sentInfo = JsonConvert.SerializeObject(user);
+            var requestBody = new StringContent(sentInfo, Encoding.UTF8, "application/json");
+
+            var response = client.PostAsync(BaseAdress + "register", requestBody).Result;
+            var responseInfo = response.Content.ReadAsStringAsync().Result;
+            return JsonConvert.DeserializeObject<User>(responseInfo);
         }
-        public User FindUser(string loginName, string password)
+        //public User FindUser(string login, string password)
+        //{
+        //    // return dbContext.Users.FirstOrDefault(u => u.Login == login && u.Password == password);
+        //}
+
+        //Login
+        public User Login(string login, string password)
         {
-            return dbContext.Users.FirstOrDefault(u => u.LoginName == loginName && u.Password == password);
+            var sentInfo = JsonConvert.SerializeObject(new User(login, password));
+            var requestBody = new StringContent(sentInfo, Encoding.UTF8, "application/json");
+
+            var response = client.PostAsync(BaseAdress + "login", requestBody).Result;
+            var responseInfo = JsonConvert.DeserializeObject<User>(response.Content.ReadAsStringAsync().Result);
+            return responseInfo;
         }
+
     }
 }

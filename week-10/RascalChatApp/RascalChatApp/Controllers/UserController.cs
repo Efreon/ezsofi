@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RascalChatApp.Entities;
 using RascalChatApp.Models.Interfaces;
+using RascalChatApp.Models.ViewModels;
 
 namespace RascalChatApp.Controllers
 {
@@ -11,16 +13,26 @@ namespace RascalChatApp.Controllers
         {
             this.userService = userService;
         }
-        [HttpGet("")]
-        public IActionResult Index()
+        [HttpGet("register")]
+        public IActionResult Register()
         {
             return View("Register");
         }
         [HttpPost("register")]
-        public IActionResult RegisterUser(string loginName, string password)
+        public IActionResult Register(string login, string password)
         {
-            userService.RegisterUser(loginName, password);
-            return RedirectToAction("LoginView");
+            if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(password))
+            {
+                var user = new User(login, password);
+                var userResponse = userService.Register(user);
+                var responseMessage = new { username = userResponse.UserName, userid = userResponse.UserId };
+                return View("Login");
+            }
+            else
+            {
+                var message = !string.IsNullOrEmpty(login) ? "missing username, please provide" : "missing password, please provide";
+                return View("Register");
+            }
         }
         [HttpGet("login")]
         public IActionResult Login()
@@ -28,19 +40,10 @@ namespace RascalChatApp.Controllers
             return View("Login");
         }
         [HttpPost("login")]
-        public IActionResult Login(string loginName, string password)
+        public IActionResult Login(string login, string password)
         {
-            var currentUser = userService.FindUser(loginName, password);
-
-            if (currentUser != null)
-            {
-
-                return View("Chat", currentUser);
-            }
-            else
-            {
-                return View("LoginFailed");
-            }
+            var currentUser = userService.Login(login, password);
+            return View("Chat", new ChatViewModel(currentUser));
         }
     }
 }

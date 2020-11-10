@@ -7,14 +7,14 @@ namespace RascalChatApp.Models.ViewModels
 {
     public class ChatViewModel
     {
-        public List<User> Users { get; set; }
+        public User User { get; set; }
         public ChatViewModel()
         {
 
         }
-        public ChatViewModel(List<User> users)
+        public ChatViewModel(User user)
         {
-            Users = users;
+            User = user;
         }
     }
 }

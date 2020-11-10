@@ -3,13 +3,13 @@
     public class User
     {
         public double UserId { get; set; }
-        public string LoginName { get; set; }
+        public string Login { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
-        public User(string loginName, string password)
+        public User(string login, string password)
         {
-            LoginName = loginName;
-            UserName = loginName;
+            Login = login;
+            UserName = login;
             Password = password;
         }
 
