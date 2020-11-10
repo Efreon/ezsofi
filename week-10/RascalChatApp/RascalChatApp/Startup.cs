@@ -14,7 +14,7 @@ namespace RascalChatApp
         {
             services.AddControllersWithViews();
             services.AddHttpClient();
-            // services.AddHttpClient("heroku", client => { 
+            //services.AddHttpClient("heroku", client => { 
             //    client.BaseAddress = new Uri("https://rascals-chat.herokuapp.com/");
             //});
             services.AddTransient<IUserService, UserService>();

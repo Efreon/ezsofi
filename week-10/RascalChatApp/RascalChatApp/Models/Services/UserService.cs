@@ -4,6 +4,7 @@ using RascalChatApp.Entities;
 using RascalChatApp.Models.Interfaces;
 using System.Net.Http;
 using System.Text;
+using System.Net.Http.Json;
 
 namespace RascalChatApp.Models.Services
 {
@@ -19,9 +20,9 @@ namespace RascalChatApp.Models.Services
         public User Register(User user)
         {
             var sentInfo = JsonConvert.SerializeObject(user);
-            var requestBody = new StringContent(sentInfo, Encoding.UTF8, "application/json");
+            var requestJson = new StringContent(sentInfo, Encoding.UTF8, "application/json");
 
-            var response = client.PostAsync(BaseAdress + "register", requestBody).Result;
+            var response = client.PostAsync(BaseAdress+"register", requestJson).Result;
             var responseInfo = response.Content.ReadAsStringAsync().Result;
             return JsonConvert.DeserializeObject<User>(responseInfo);
         }
