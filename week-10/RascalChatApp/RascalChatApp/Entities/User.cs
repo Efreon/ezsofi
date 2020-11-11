@@ -11,13 +11,12 @@ namespace RascalChatApp.Entities
         [Required]
         public string Password { get; set; }
         public string ApiKey { get; set; }
+        public string AvatarUrl { get; set; }
 
         public User(string login, string password)
         {
             Login = login;
-            UserName = login;
             Password = password;
         }
-
     }
 }

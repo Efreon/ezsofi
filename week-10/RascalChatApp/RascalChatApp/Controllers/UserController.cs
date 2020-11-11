@@ -56,7 +56,6 @@ namespace RascalChatApp.Controllers
             {
                 return View("LoginFailed");
             }
-            
         }
         #endregion
 
@@ -65,6 +64,12 @@ namespace RascalChatApp.Controllers
         public IActionResult Update()
         {
             return View("Update");
+        }
+        [HttpPost("update")]
+        public IActionResult Update(string userName, string avatarUrl)
+        {
+            var updatedUser = userService.Update(userName, avatarUrl);
+            return View("UserUpdated", new UpdateViewModel(updatedUser));
         }
         #endregion
     }

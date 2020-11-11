@@ -1,1 +1,30 @@
-﻿
+﻿@using RascalChatApp.Models.ViewModels
+@model ChatViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="navbar">
+    @Html.Partial("_NavBar")
+</div>
+<div class="form-container">
+    <div class="section-header">
+        <h2>Update your data</h2>
+    </div>
+    @using (Html.BeginForm("Update", "User", FormMethod.Post))
+    {
+        <div class="input-container">
+            @Html.Label("Username:")
+            @Html.TextBox("userName")
+        </div>
+
+        <div class="input-container">
+            @Html.Label("Avatar URL:")
+            @Html.TextBox("avatarUrl")
+        </div>
+
+        <input type="submit" value="Update" />
+    }
+
+</div>
