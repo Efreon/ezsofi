@@ -5,15 +5,15 @@ using System.Xml;
 
 namespace RascalChatApp.Models.ViewModels
 {
-    public class ChatViewModel
+    public class UserViewModel
     {
         public User User { get; set; }
 
-        public ChatViewModel()
+        public UserViewModel()
         {
 
         }
-        public ChatViewModel(User user)
+        public UserViewModel(User user)
         {
             User = user;
         }

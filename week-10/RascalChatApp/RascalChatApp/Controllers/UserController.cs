@@ -50,7 +50,7 @@ namespace RascalChatApp.Controllers
             var currentUser = userService.Login(login, password);
             if (currentUser != null)
             {
-                return View("Chat", new ChatViewModel(currentUser));
+                return View("Message", new UserViewModel(currentUser));
             }
             else
             {
@@ -68,8 +68,17 @@ namespace RascalChatApp.Controllers
         [HttpPost("update")]
         public IActionResult Update(string userName, string avatarUrl)
         {
-            var updatedUser = userService.Update(userName, avatarUrl);
-            return View("UserUpdated", new UpdateViewModel(updatedUser));
+            userService.Update(userName, avatarUrl);
+            return View("UserUpdated");
+        }
+        #endregion
+
+        #region LogOut
+        [HttpPost("logout")]
+        public IActionResult Logout()
+        {
+            userService.Logout();
+            return RedirectToAction("Login");
         }
         #endregion
     }

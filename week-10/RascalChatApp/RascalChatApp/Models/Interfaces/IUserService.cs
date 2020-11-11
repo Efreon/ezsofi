@@ -8,6 +8,6 @@ namespace RascalChatApp.Models.Interfaces
         public User Register(User user);
         public User Login(string login, string password);
         public UpdateUserResp Update(string userName, string avatarUrl);
-
+        public bool Logout();
     }
 }

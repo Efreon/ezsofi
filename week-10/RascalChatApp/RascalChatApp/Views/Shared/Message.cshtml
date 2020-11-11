@@ -1,0 +1,20 @@
+﻿@using RascalChatApp.Models.ViewModels
+@model UserViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="navbar">
+    @Html.Partial("_NavBar")
+</div>
+
+<div class="chat-container">
+    @using (Html.BeginForm("SendMsg", "Message", FormMethod.Post))
+    {
+        @Html.Hidden("channelId",1)
+        @Html.Hidden("channelSecret", null)
+        @Html.TextArea("content")
+        <input type="submit" value="Send message" />
+    }
+</div>

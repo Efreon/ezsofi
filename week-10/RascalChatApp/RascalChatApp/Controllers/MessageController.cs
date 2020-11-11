@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using RascalChatApp.Entities.Requests;
 using RascalChatApp.Models.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RascalChatApp.Controllers
 {
@@ -13,6 +10,13 @@ namespace RascalChatApp.Controllers
         public MessageController(IMessageService messageService)
         {
             this.messageService = messageService;
+        }
+
+        [HttpPost("message")]
+        public IActionResult SendMessage(string content)
+        {
+            messageService.SendMsg(new SendMessageRequest(content));
+            return View("Message");
         }
     }
 }

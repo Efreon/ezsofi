@@ -18,6 +18,7 @@ namespace RascalChatApp
             //    client.BaseAddress = new Uri("https://rascals-chat.herokuapp.com/");
             //});
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IMessageService, MessageService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

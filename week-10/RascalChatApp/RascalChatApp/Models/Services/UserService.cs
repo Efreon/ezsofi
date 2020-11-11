@@ -53,9 +53,15 @@ namespace RascalChatApp.Models.Services
             var requestBody = new StringContent(sentInfo, Encoding.UTF8, "application/json");
 
             var response = client.PostAsync("update", requestBody).Result;
-            var updatedUser = JsonConvert.DeserializeObject<UpdateUserResp>(response.Content.ReadAsStringAsync().Result);
+            var updateResponse = JsonConvert.DeserializeObject<UpdateUserResp>(response.Content.ReadAsStringAsync().Result);
 
-            return updatedUser;
+            return updateResponse;
+        }
+
+        public bool Logout()
+        {
+            ApiKey = string.Empty;
+            return true;
         }
     }
 }
