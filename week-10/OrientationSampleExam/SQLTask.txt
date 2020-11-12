@@ -1,0 +1,11 @@
+1)Write an SQL query to get all Renault cars which are more expensive than 8000
+SELECT *
+FROM carsForSale
+WHERE manufacturerName = "Renault"
+AND acquisitionPrice > 8000
+
+2)Write an SQL query to decrease all Volkswagen car's price by 100 units
+SELECT *,
+CASE WHEN manufacturerName = "Wolkswagen" then acquisitionPrice-100 as acquisitionPriceDec
+ELSE acquisitionPrice
+FROM carsForSale
