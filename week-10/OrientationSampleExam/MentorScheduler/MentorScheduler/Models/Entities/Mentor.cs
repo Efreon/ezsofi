@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace MentorScheduler.Models.Entities
 {
@@ -17,6 +13,11 @@ namespace MentorScheduler.Models.Entities
         //navigation properties
         public GfaClass Class { get; set; }
         public long ClassId { get; set; }
+        public Mentor(string mentorName, GfaClass gfaClass)
+        {
+            MentorName = mentorName;
+            Class = gfaClass; 
+        }
         public Mentor()
         {
 

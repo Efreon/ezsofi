@@ -18,7 +18,7 @@
                 <ul>
                     @foreach (var mentor in Model.Mentors.ToList())
                     {
-                        <li><a href="mentor/{@mentor.MentorId}">@mentor.MentorName</a></li>
+                        <li><a href="mentor/@mentor.MentorId">@mentor.MentorName</a></li>
                     }
                 </ul>
             </div>
@@ -30,14 +30,14 @@
     </div>
 
     <div class="new-mentor-form">
-        <form action="mentor" method="POST">
+        <form action="/mentor" method="POST">
             <label>Name</label>
             <input type="text" id="mentor" name="mentorName" required /><br />
 
             <label>Class</label><br/>
-            @foreach (var gfaClass in Model?.Classes.ToList())
+            @foreach (var gfaClass in @Model.Classes.ToList())
             {
-                <input type="radio" id="@gfaClass.ClassName" name="@gfaClass.ClassName" value="@gfaClass.ClassName" />
+                <input type="radio" id="classId" name="classId" value="@gfaClass.ClassId" />
                 <label>@gfaClass.ClassName</label><br/>
             }<br />
             <input type="submit" value="Add mentor" />

@@ -33,6 +33,15 @@ namespace MentorScheduler.Models.Services
         {
             return dbContext.Classes.ToList();
         }
+        public GfaClass FindClassId(long classId)
+        {
+            return dbContext.Classes.FirstOrDefault(c => c.ClassId == classId);
+        }
+        public bool FindClass(string className)
+        {
+            var gfaclass = dbContext.Classes.FirstOrDefault(c => c.ClassName == className);
+            return gfaclass != null;
+        }
         #endregion
     }
 }

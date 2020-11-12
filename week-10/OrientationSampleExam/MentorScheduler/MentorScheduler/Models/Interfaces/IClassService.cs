@@ -7,5 +7,7 @@ namespace MentorScheduler.Models.Interfaces
     {
         public void InitialClasses();
         public List<GfaClass> AllClasses();
+        public GfaClass FindClassId(long classId);
+        public bool FindClass(string className);
     }
 }

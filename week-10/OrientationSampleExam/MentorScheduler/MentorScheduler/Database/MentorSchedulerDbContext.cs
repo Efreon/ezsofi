@@ -15,9 +15,10 @@ namespace MentorScheduler.Database
         {
             // one-to-many
             modelBuilder.Entity<Mentor>()
-                        .HasOne(t => t.Class)
-                        .WithMany(r => r.Mentors)
-                        .HasForeignKey(t => t.ClassId);
+                        // .HasOne(t => t.Class)
+                        .HasOne<GfaClass>(c => c.Class)
+                        .WithMany(m => m.Mentors)
+                        .HasForeignKey(c => c.ClassId);
             base.OnModelCreating(modelBuilder);
         }
     }

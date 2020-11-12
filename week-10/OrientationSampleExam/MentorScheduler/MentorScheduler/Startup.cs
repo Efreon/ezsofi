@@ -19,7 +19,8 @@ namespace MentorScheduler
         }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddNewtonsoftJson(options =>
+            options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddTransient<IMentorService, MentorService>();
             services.AddTransient<IClassService, ClassService>();
             services.AddDbContext<MentorSchedulerDbContext>(builder => builder.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));

@@ -13,9 +13,13 @@ namespace MentorScheduler.Models.Entities
 
         // navigation property
         public List<Mentor> Mentors { get; set; }
-        public GfaClass(string className)
+        public GfaClass(string  className)
         {
             ClassName = className; 
+        }
+        public GfaClass()
+        {
+            Mentors = new List<Mentor>();
         }
     }
 }
