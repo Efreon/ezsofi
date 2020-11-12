@@ -6,7 +6,7 @@ namespace MentorScheduler.Database
     public class MentorSchedulerDbContext : DbContext
     {
         public DbSet<Mentor> Mentors { get; set; }
-        public DbSet<Class> Classes { get; set; }
+        public DbSet<GfaClass> Classes { get; set; }
         public MentorSchedulerDbContext(DbContextOptions options) : base(options)
         {
 

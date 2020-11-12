@@ -15,7 +15,11 @@ namespace MentorScheduler.Models.Entities
         public string MentorName { get; set; }
 
         //navigation properties
-        public Class Class { get; set; }
+        public GfaClass Class { get; set; }
         public long ClassId { get; set; }
+        public Mentor()
+        {
+
+        }
     }
 }

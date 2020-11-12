@@ -1,0 +1,48 @@
+﻿@using MentorScheduler.Models.ViewModels
+@model SchedulerViewModel
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Mentor Scheduler</title>
+</head>
+<body>
+    <div class="head">
+        <h1>Welcome to Mentor Scheduler :)</h1>
+    </div>
+
+    <div class="mentor-list">
+        <p>See detail of mentors:</p>
+        @if (@Model.Mentors.Count > 0)
+        {
+            <div class="list-items">
+                <ul>
+                    @foreach (var mentor in Model.Mentors.ToList())
+                    {
+                        <li><a href="mentor/{@mentor.MentorId}">@mentor.MentorName</a></li>
+                    }
+                </ul>
+            </div>
+        }
+        else
+        {
+            <p>There are no mentors yet. Please add one.</p>
+        }
+    </div>
+
+    <div class="new-mentor-form">
+        <form action="mentor" method="POST">
+            <label>Name</label>
+            <input type="text" id="mentor" name="mentorName" required /><br />
+
+            <label>Class</label><br/>
+            @foreach (var gfaClass in Model?.Classes.ToList())
+            {
+                <input type="radio" id="@gfaClass.ClassName" name="@gfaClass.ClassName" value="@gfaClass.ClassName" />
+                <label>@gfaClass.ClassName</label><br/>
+            }<br />
+            <input type="submit" value="Add mentor" />
+        </form>
+    </div>
+
+</body>
+</html>

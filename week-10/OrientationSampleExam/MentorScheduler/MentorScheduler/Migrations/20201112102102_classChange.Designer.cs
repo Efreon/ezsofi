@@ -3,14 +3,16 @@ using MentorScheduler.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MentorScheduler.Migrations
 {
     [DbContext(typeof(MentorSchedulerDbContext))]
-    partial class MentorSchedulerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201112102102_classChange")]
+    partial class classChange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

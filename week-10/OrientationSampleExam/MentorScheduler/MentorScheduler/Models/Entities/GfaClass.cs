@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MentorScheduler.Models.Entities
 {
-    public class Class
+    public class GfaClass
     {
         // entity properties
         [Key]
@@ -13,5 +13,9 @@ namespace MentorScheduler.Models.Entities
 
         // navigation property
         public List<Mentor> Mentors { get; set; }
+        public GfaClass(string className)
+        {
+            ClassName = className; 
+        }
     }
 }
