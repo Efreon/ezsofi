@@ -1,0 +1,35 @@
+﻿@using EntityFramework.Models.ViewModels
+@model ItemViewModel
+@{
+    var todo = Model.Todo;
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Edit todo</title>
+</head>
+<body>
+    <div class="title">
+        <h1>Edit Todo</h1>
+    </div>
+    <div class="editor-container">
+        @using (Html.BeginForm("EditTodo", "", FormMethod.Post))
+        {
+            @Html.HiddenFor(t => t.Todo.Id)
+            <div class="description-box">
+                @Html.LabelFor(t => t.Todo.Title, "Todo description")
+                @Html.TextBoxFor(t => t.Todo.Title)
+            </div>
+            <div class="urgent-box">
+                @Html.LabelFor(t => t.Todo.IsUrgent, "Urgent")
+                @Html.CheckBoxFor(t => t.Todo.IsUrgent, new { @checked = "true" })
+            </div>
+            <div class="done-box">
+                @Html.LabelFor(t => t.Todo.IsDone, "Done")
+                @Html.CheckBoxFor(t => t.Todo.IsDone, new { @checked = "true" })
+            </div>
+
+            <input type="submit" value="Submit" />
+        }
+    </div>
+</body>
+</html>

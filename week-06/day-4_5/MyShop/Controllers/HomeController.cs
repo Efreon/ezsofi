@@ -9,7 +9,6 @@ using MyShop.Services;
 
 namespace MyShop.Controllers
 {
-    //[Route("webshop")]
     [Route("")]
     public class HomeController : Controller
     {
@@ -18,43 +17,39 @@ namespace MyShop.Controllers
         {
             service = new ItemService();
         }
-        public string Index()
-        {
-            return "Hello World";
-        }
-        [HttpGet("items")]
-        public IActionResult Items(ShopItem item)
+        [HttpGet("webshop")]
+        public IActionResult Items()
         {
             var shopItems = service.ReadAllItemsFromFile();
-            var model = new ItemViewModel(item, shopItems);
+            var model = new ItemViewModel(shopItems);
             return View(model);
         }
         [HttpGet("cheapest-first")]
-        public IActionResult ItemsSortedCheapest(ShopItem item)
+        public IActionResult ItemsSortedCheapest()
         {
             var shopItems = service.ItemsSortedPrice();
-            var model = new ItemViewModel(item, shopItems);
+            var model = new ItemViewModel(shopItems);
             return View("Items", model);
         }
         [HttpGet("only-available")]
-        public IActionResult ItemsOnlyAvailable(ShopItem item)
+        public IActionResult ItemsOnlyAvailable()
         {
             var shopItems = service.ItemsOnlyAvailable();
-            var model = new ItemViewModel(item, shopItems);
+            var model = new ItemViewModel(shopItems);
             return View("Items", model);
         }
         [HttpGet("contains-nike")]
-        public IActionResult ItemsContainsNike(ShopItem item)
+        public IActionResult ItemsContainsNike()
         {
             var shopItems = service.ItemsContainsNike();
-            var model = new ItemViewModel(item, shopItems);
+            var model = new ItemViewModel(shopItems);
             return View("Items", model);
         }
         [HttpPost("search")]
-        public IActionResult Search(ShopItem item, /*[FromQuery(Name = "search")]*/ string search)
+        public IActionResult Search(string search)
         {
             var shopItems = service.Search(search);
-            var model = new ItemViewModel(item, shopItems);
+            var model = new ItemViewModel(shopItems);
             return View("Items", model);
         }
         [HttpGet("average-stock")]
@@ -71,5 +66,49 @@ namespace MyShop.Controllers
             var model = new ItemViewModel(mostExpensive);
             return View("mostExpensive", model);
         }
+
+        [HttpGet("more-filters")]
+        public IActionResult MoreFilters()
+        {
+            var shopItems = service.ReadAllItemsFromFile();
+            var model = new ItemViewModel(shopItems);
+            return View(model);
+        }
+
+        [HttpGet("filter-by-type/{type}")]
+        public IActionResult FilterType([FromRoute] string type)
+        {
+            var shopItems = service.FilterType(type);
+            var model = new ItemViewModel(shopItems);
+            return View(model);
+        }
+
+        // prices in euro //
+        [HttpGet("price-in-euro")]
+        public IActionResult PriceEuro()
+        {
+            var shopItems = service.PriceEuro();
+            var model = new ItemViewModel(shopItems);
+            return View(model);
+        }
+
+        // prices in original currency //
+        [HttpGet("/price-in-original")]
+        public IActionResult PriceOriginal()
+        {
+            var shopItems = service.PriceEuro();    
+            var model = new ItemViewModel(shopItems);
+            return RedirectToAction("MoreFilters");
+        }
+
+        // filter by price//
+        [HttpPost("/filter-by-price")]
+        public IActionResult FilterPrice(string how, int price)
+        {
+            var shopItems = service.FilterPrice(how, price);
+            var model = new ItemViewModel(shopItems);
+            return View("MoreFilters", model);
+        }
+
     }
 }

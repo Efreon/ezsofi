@@ -1,12 +1,12 @@
 ﻿@using MyShop.Models.ViewModels
 @model ItemViewModel
-@{ 
+@{
     var shopItems = Model.ShopItems;
 }
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>MyShop</title>
+    <title>MyShop - More Filters</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="~/styles.css" rel="stylesheet" type="text/css" />
 </head>
@@ -16,11 +16,7 @@
     </div>
 
     <div class="buttonContainer">
-        @Html.Partial("_Buttons")
-    </div>
-
-    <div class="itemsearch-container">
-        @Html.Partial("_ItemSearch")
+        @Html.Partial("_MoreButtons")
     </div>
 
     <div class="tableContainer">

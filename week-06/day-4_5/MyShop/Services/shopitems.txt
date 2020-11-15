@@ -1,5 +1,5 @@
-Running shoes;Nike running shoes for every day sport;1000;5
-Printer;Some HP printer thatwill print pages;3000;2
-Coca Cola;0.5l standard coke;25;0
-Wokin;Chicken with fried rice and WOKIN sauce;119;100
-T-shirt;Blue with corgi on a bike;300;1
+Running shoes;Nike running shoes for every day sport;1000;5;clothes and shoes
+Printer;Some HP printer thatwill print pages;3000;2;electronics
+Coca Cola;0.5l standard coke;25;0;beverages and snacks
+Wokin;Chicken with fried rice and WOKIN sauce;119;100;beverages and snacks
+T-shirt;Blue with corgi on a bike;300;1;clothes and shoes

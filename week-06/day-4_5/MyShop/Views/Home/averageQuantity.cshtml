@@ -10,40 +10,16 @@
     <link href="~/styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div class="topContainer">
-            <div class="title">
-                <a href="items">My Shop</a>
-            </div>
+    <div class="header-container">
+        @Html.Partial("_Header")
     </div>
+
     <div class="buttonContainer">
-        <div class="buttonBox">
-            <a href="/only-available">Only available</a>
-        </div>
-        <div class="buttonBox">
-            <a href="/cheapest-first">cheapest first</a>
-        </div>
-        <div class="buttonBox">
-            <a href="/contains-nike">contains nike</a>
-        </div>
-        <div class="buttonBox">
-            <a href="/average-stock">average stock</a>
-        </div>
-        <div class="buttonBox">
-            <a href="/most-expensive">most expensive available</a>
-        </div>
+        @Html.Partial("_Buttons")
     </div>
-    <div class="searchBoxContainer">
-        <form action="search" method="get">
-            <div class="SearchBox">
-                <label for="itemSearch">Search for: </label>
-            </div>
-            <div class="SearchBox">
-                <input type="text" id="itemSearch" name="search" placeholder="...something like nike" />
-            </div>
-            <div class="SearchBox">
-                <input type="submit" value="Search" />
-            </div>
-        </form>
+
+    <div class="itemsearch-container">
+        @Html.Partial("_ItemSearch")
     </div>
 
     <div class="singleValueContainer">
@@ -52,6 +28,7 @@
             @Model.StockQtyAvg
         </div>
     </div>
+    
 </body>
 </html>
 

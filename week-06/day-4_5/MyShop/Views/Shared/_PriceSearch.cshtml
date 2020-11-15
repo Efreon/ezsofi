@@ -1,0 +1,26 @@
+﻿
+<form action="/filter-by-price" method="POST" id="pricesearch">
+    <div class="SearchBox">
+        <input type="hidden" name="how" value="above" />
+        <button type="submit">Above</button>
+    </div>
+
+    <div class="SearchBox">
+        <input type="hidden" name="how" value="below" />
+        <button type="submit">Below</button>
+    </div>
+
+    <div class="SearchBox">
+        <input type="hidden" name="how" value="exactly" />
+        <button type="submit">Exactly</button>
+    </div>
+
+    <div class="SearchBox">
+        <label for="priceSearch">Filter by price: </label>
+    </div>
+
+    <div class="SearchBox">
+        <input type="number" id="priceSearch" name="price" placeholder="300" />
+    </div>
+
+</form>
