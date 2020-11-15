@@ -1,0 +1,16 @@
+﻿@model MyApplication.Models.GreetingNational
+
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Random hellos</title>
+        <style>
+            body {
+                color: @Model.RandomColor;
+                font-size: @Model.RandomFontSize;
+            }
+        </style>
+    </head>
+    <body>
+        @Model.RandomHello
+    </body>
+    </html>

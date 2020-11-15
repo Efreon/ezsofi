@@ -21,6 +21,7 @@ namespace MyApplication.Models
             Id = callCounter;
             Content = $"Hello, {name}!";
         }
+
         //public Greeting(long id, string content)
         //{
         //    Id=id;
