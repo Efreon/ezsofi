@@ -14,6 +14,6 @@ namespace EntityFramework.Models.Services
         void DeleteTodo(long id);
         List<Todo> Search(string search);
         Todo FindTodo(long id);
-        void Edit(long id, string title, bool isUrgent, bool isDone);
+        public void Edit(long id, string title, bool isUrgent, bool isDone, Assignee assignee);
     }
 }

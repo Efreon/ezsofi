@@ -14,6 +14,7 @@ namespace EntityFramework.Models.Services
         public void DeleteAssignee(long id);
         public void EditAssignee(long id, string name, string email);
         public Assignee FindAssignee(long id);
+        public void AssigneeTodoLink(long assigneeId, long todoId);
 
     }
 }

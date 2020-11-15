@@ -50,13 +50,14 @@ namespace EntityFramework.Models.Services
             }
             return searchedTodos;
         }
-        public void Edit(long id, string title, bool isUrgent, bool isDone)
+        public void Edit(long id, string title, bool isUrgent, bool isDone, Assignee assignee)
         {
             var currentTodo = dbContext.Todos.FirstOrDefault(todo => todo.Id == id);
 
             currentTodo.Title = title;
             currentTodo.IsUrgent = isUrgent;
             currentTodo.IsDone = isDone;
+            currentTodo.Assignee = assignee;
             dbContext.Todos.Update(currentTodo);
             dbContext.SaveChanges();
         }

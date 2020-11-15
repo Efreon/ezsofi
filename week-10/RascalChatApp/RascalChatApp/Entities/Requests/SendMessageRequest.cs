@@ -13,6 +13,13 @@ namespace RascalChatApp.Entities.Requests
         public string Content { get; set; }
         public SendMessageRequest(string content)
         {
+            
+            Content = content;
+        }
+        public SendMessageRequest(int channelId, string channelSecret, string content)
+        {
+            ChannelId = channelId;
+            ChannelSecret = channelSecret;
             Content = content;
         }
     }

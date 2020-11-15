@@ -16,15 +16,15 @@ namespace RascalChatApp.Models.Services
         public MessageService([FromServices] IHttpClientFactory clientFactory)
         {
             client = clientFactory.CreateClient();
-            client.DefaultRequestHeaders.Add("ApiKey", ApiKey);
-            client.BaseAddress = new Uri("https://rascals-chat.herokuapp.com/api/");
+            client.DefaultRequestHeaders.Add("ApiKey", UserService.ApiKey);
+            // client.BaseAddress = new Uri("https://rascals-chat.herokuapp.com/api/");
         }
         public Message SendMsg(SendMessageRequest messageRequest)
         {
             var sentInfo = JsonConvert.SerializeObject(messageRequest);
             var requestJson = new StringContent(sentInfo, Encoding.UTF8, "application/json");
 
-            var response = client.PostAsync("message", requestJson).Result;
+            var response = client.PostAsync("https://rascals-chat.herokuapp.com/api/message", requestJson).Result;
             var responseInfo = response.Content.ReadAsStringAsync().Result;
 
             var MessageSent = JsonConvert.DeserializeObject<Message>(responseInfo);

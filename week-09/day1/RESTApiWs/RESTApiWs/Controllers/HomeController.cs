@@ -1,13 +1,14 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Server.Kestrel.Core.Features;
+using RESTApiWs.IntegrationTests;
 using RESTApiWs.Models;
 using RESTApiWs.Services;
 
 namespace RESTApiWs.Controllers
 {
     [ApiController]
-    [Route("/")]
+    [Route("api/[controller]")]
     public class HomeController : ControllerBase
     {
         private IAPIService apiService { get; set; }
@@ -34,11 +35,12 @@ namespace RESTApiWs.Controllers
             if (input.HasValue)
             {
                 logService.LogRequest("doubling", $"input = {input}");
-                return new JsonResult(new { received = input, result = 2 * input });
+                return Ok(new { received = input, result = 2 * input });
+                // return Ok(new Response { Received = input, Result = 2 * input });
             }
             else
             {
-                return new JsonResult(new { error = "Please provide an input!" });
+                return BadRequest(new { error = "Please provide an input!" });
             }
         }
 
@@ -61,7 +63,7 @@ namespace RESTApiWs.Controllers
             else
             {
                 logService.LogRequest("greeter", $"name = {name}, title = {title}");
-                return new JsonResult(new { welcome_message = $"Oh, hi there {name}, my dear {title}!" });
+                return Ok(new { welcome_message = $"Oh, hi there {name}, my dear {title}!" });
             }
         }
         
@@ -71,7 +73,7 @@ namespace RESTApiWs.Controllers
             if (!String.IsNullOrEmpty(appendable))
             {
                 logService.LogRequest("appenda", $"appendable = {appendable}");
-                return new JsonResult(new { appended = appendable + "a" });
+                return Ok(new { appended = appendable + "a" });
             }
             else
             {
@@ -80,17 +82,19 @@ namespace RESTApiWs.Controllers
         }
 
         [HttpPost("dountil/{operation}")]
-        public ActionResult DoUntil(string operation, [FromBody] BodyData data)
+        public ActionResult DoUntil([FromRoute] string operation, [FromBody] BodyData data)
         {
             if (data.Until.HasValue && operation == "sum")
             {
                 logService.LogRequest("dountil", $"operation = {operation}, data = {data}");
-                return new JsonResult(new { result = apiService.Sum((int)data.Until) });
+                return Ok(new { result = apiService.Sum((int)data.Until) });
+                // return new JsonResult(new { result = apiService.Sum((int)data.Until) });
             }
             else if (data.Until.HasValue && operation == "factor")
             {
                 logService.LogRequest("dountil", $"operation = {operation}, data = {data}");
-                return new JsonResult(new { result = apiService.Factorial((int)data.Until) });
+                return Ok(new { result = apiService.Factorial((int)data.Until) });
+                // return new JsonResult(new { result = apiService.Factorial((int)data.Until) });
             }
             else
             {

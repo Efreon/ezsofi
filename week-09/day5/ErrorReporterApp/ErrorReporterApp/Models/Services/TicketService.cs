@@ -31,10 +31,18 @@ namespace ErrorReporterApp.Models.Services
             dbContext.Remove(dbContext.Tickets.FirstOrDefault(a => a.TicketId == id));
             dbContext.SaveChanges();
         }
+        //public List<Ticket> FilterQuery(string manufacturer, string reporter)
+        //{
+        //    return dbContext.Tickets.Where(t => t.Manufacturer == manufacturer || t.Reporter.ReporterName == reporter)
+        //                            .ToList();
+        //}
         public List<Ticket> FilterQuery(string manufacturer, string reporter)
         {
-            return dbContext.Tickets.Where(t => t.Manufacturer == manufacturer || t.Reporter.ReporterName == reporter)
+
+            var filteredTickets =  dbContext.Tickets.Where(t => t.Manufacturer == manufacturer || t.Reporter.ReporterName == reporter)
                                     .ToList();
+            return filteredTickets;
         }
+
     }
 }

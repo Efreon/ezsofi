@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EntityFramework.Data;
+using EntityFramework.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging.Abstractions;
 
@@ -47,6 +48,12 @@ namespace EntityFramework.Models.Services
         {
             var assigne = dbContext.Assignees.FirstOrDefault(a => a.Id == id);
             return assigne;
+        }
+        public void AssigneeTodoLink(long assigneeId, long todoId)
+        {
+            var assignee = dbContext.Assignees.FirstOrDefault(a => a.Id == assigneeId);
+            var todo = dbContext.Todos.FirstOrDefault(a => a.Id == todoId);
+            assignee.Todos.Add(todo);
         }
     }
 }

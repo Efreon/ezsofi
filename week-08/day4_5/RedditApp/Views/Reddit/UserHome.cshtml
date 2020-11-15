@@ -34,17 +34,19 @@
                     <td>
                         @using (Html.BeginForm("UpVote", ""))
                         {
-                            <input type="hidden" name="userid" value="@Model.CurrentUser.UserId" />
-                            <input type="hidden" name="post" value="@post.PostId" />
-                            <a href="upvote/?userid=@Model.CurrentUser.UserId/?postid=@post.PostId">+</a>
+                            @*<input type="hidden" name="userid" value="@Model.CurrentUser.UserId" />*@
+                            <input type="hidden" name="PostId" value="@post.PostId" />
+                            <input type="submit" value="+" />
+                            @*<a href="upvote/?userid=@Model.CurrentUser.UserId/?postid=@post.PostId">+</a>*@
                         }
                     </td>
                     <td>
                         @using (Html.BeginForm("DownVote", ""))
                         {
-                            <input type="hidden" name="userid" value="@Model.CurrentUser.UserId" />
-                            <input type="hidden" name="post" value="@post.PostId" />
-                            <a href="downvote/?userid=@Model.CurrentUser.UserId/?postid=@post.PostId">-</a>
+                            @*<input type="hidden" name="userid" value="@Model.CurrentUser.UserId" />*@
+                            <input type="hidden" name="PostId" value="@post.PostId" />
+                            <input type="submit" value="-" />
+                            @*<a href="upvote/?userid=@Model.CurrentUser.UserId/?postid=@post.PostId">+</a>*@
                         }
                     </td>
                     <td>@post.PostTitle </td>

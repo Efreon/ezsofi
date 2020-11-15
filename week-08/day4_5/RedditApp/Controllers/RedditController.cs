@@ -40,11 +40,12 @@ namespace RedditApp.Controllers
             postService.NewPost(currentPost);
             return View("UserHome", new UserPostViewModel(userServices.FindUser(id), userServices.AllUser(), postService.AllPosts()));
         }
-        [HttpGet("upvote")]
+        [HttpPost("userhome/upvote")]
         public IActionResult UpVote(double userid, double postid)
         {
             postService.UpVote(userid, postid);
-            return View("UserHome");
+            return RedirectToAction("UserHome", "Reddit", new { UserId = userid });
+            // return View("UserHome");
         }
         #endregion
 
@@ -70,6 +71,7 @@ namespace RedditApp.Controllers
         {
             var currentUser = userServices.Login(username, pwd);
             if (currentUser != null)
+                
             {
                 return RedirectToAction("UserHome", "Reddit", new { userid = currentUser.UserId});
             }

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+﻿using EntityFramework.Model;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -15,10 +16,13 @@ namespace EntityFramework.Models
         public string Name { get; set; }
         [Required]
         public string Email { get; set; }
+        public List<Todo> Todos { get; set; }
         public Assignee(string name, string email)
         {
             Name = name;
             Email = email;
+            Todos = new List<Todo>();
+
         }
         public Assignee()
         {

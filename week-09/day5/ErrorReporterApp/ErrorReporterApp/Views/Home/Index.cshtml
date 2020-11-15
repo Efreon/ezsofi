@@ -14,21 +14,29 @@
     <div class="new-ticket-form">
         <form action="report" method="POST">
             <label>Name</label>
+            <br />
             <select name="reporterId" id="reporter">
                 @foreach (var reporter in Model?.Reporters.ToList())
                 {
                     <option name="reporterId" value="@reporter.ReporterId">@reporter.ReporterName</option>
                 }
             </select>
+            <br />
 
             <label> Manufacturer</label>
+            <br />
             <input type="text" id="manufacturer" name="manufacturer" required />
+            <br />
 
             <label> Serial#</label>
+            <br />
             <input type="number" id="serialNumber" name="serialNumber" required />
+            <br />
 
             <label>Description</label>
+            <br />
             <input type="text" id="description" name="description" required />
+            <br />
 
             <input type="submit" value="Report" />
         </form>

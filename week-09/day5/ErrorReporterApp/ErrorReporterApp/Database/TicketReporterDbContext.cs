@@ -15,7 +15,7 @@ namespace ErrorReporterApp.Database
         {
             // one-to-many
             modelBuilder.Entity<Ticket>()
-                        .HasOne(t => t.Reporter)
+                        .HasOne<Reporter>(t => t.Reporter)
                         .WithMany(r => r.Tickets)
                         .HasForeignKey(t => t.ReporterId);
             base.OnModelCreating(modelBuilder);

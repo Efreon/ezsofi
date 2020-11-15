@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using EntityFramework.Models;
+using System;
+using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 
 namespace EntityFramework.Model
@@ -12,6 +14,11 @@ namespace EntityFramework.Model
         public bool IsUrgent { get; set; }
         public bool IsDone { get; set; }
         public string Description { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime CreatedAt {get; set;}
+        [DataType(DataType.Date)]
+        public DateTime DueAtet { get; set; }
+        public Assignee Assignee { get; set; }
 
 
         public Todo(long id, string title, bool isUrgent = false, bool isDone=false, string description="")
@@ -21,6 +28,7 @@ namespace EntityFramework.Model
             IsUrgent = isUrgent;
             IsDone = isDone;
             Description = description;
+            CreatedAt = DateTime.Now;
         }
         public Todo(string title, bool isUrgent = false, bool isDone = false, string description = "")
         {
@@ -28,6 +36,7 @@ namespace EntityFramework.Model
             IsUrgent = isUrgent;
             IsDone = isDone;
             Description = description;
+            CreatedAt = DateTime.Now;
         }
         public Todo()
         {

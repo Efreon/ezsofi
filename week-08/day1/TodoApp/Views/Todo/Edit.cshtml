@@ -1,4 +1,5 @@
-﻿@using EntityFramework.Models.ViewModels
+﻿@using EntityFramework.Models; 
+@using EntityFramework.Models.ViewModels
 @model ItemViewModel
 @{
     var todo = Model.Todo;
@@ -27,7 +28,13 @@
                 @Html.LabelFor(t => t.Todo.IsDone, "Done")
                 @Html.CheckBoxFor(t => t.Todo.IsDone, new { @checked = "true" })
             </div>
-
+            <div class="duedate-box">
+                <label for="dueat">Due date</label>
+                <input type="datetime-local" id="dueat" name="duedate">
+            </div>
+            <div class="assignee-box">
+                @Html.DropDownListFor(t => t.Todo.Assignee, new SelectList(Enum.GetValues(typeof(Assignee)))), "Select Assignee");
+            </div>
             <input type="submit" value="Submit" />
         }
     </div>

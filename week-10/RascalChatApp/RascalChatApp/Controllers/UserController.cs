@@ -50,7 +50,8 @@ namespace RascalChatApp.Controllers
             var currentUser = userService.Login(login, password);
             if (currentUser != null)
             {
-                return View("Message", new UserViewModel(currentUser));
+                // return View("Message", new UserViewModel(currentUser));
+                return View("Message", new MessageViewModel(new Message()));
             }
             else
             {
@@ -78,7 +79,7 @@ namespace RascalChatApp.Controllers
         public IActionResult Logout()
         {
             userService.Logout();
-            return RedirectToAction("Login");
+            return View("Login");
         }
         #endregion
     }

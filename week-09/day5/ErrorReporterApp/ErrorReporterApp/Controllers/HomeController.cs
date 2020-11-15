@@ -51,12 +51,29 @@ namespace ErrorReporterApp.Controllers
                 return BadRequest(new { message = $"Can not delete the ticket nr. {id} . Secret is not voala"});
             }
         }
+        //[HttpGet("list/query")]
+        //public IActionResult FilterQuery([FromQuery] string manufacturer, [FromQuery] string reporter)
+        //{
+        //    if (!string.IsNullOrEmpty(manufacturer) || !string.IsNullOrEmpty(reporter))
+        //    {
+        //        return Ok(new { result = "ok", tickets = ticketService.FilterQuery(manufacturer, reporter) });
+        //    }
+        //    else
+        //    {
+        //        return BadRequest(new { message = "Invalid input, can't return any tickets" });
+        //    }
+        //}
         [HttpGet("list/query")]
         public IActionResult FilterQuery([FromQuery] string manufacturer, [FromQuery] string reporter)
         {
+
             if (!string.IsNullOrEmpty(manufacturer) || !string.IsNullOrEmpty(reporter))
             {
-                return Ok(new { result = "ok", tickets = ticketService.FilterQuery(manufacturer, reporter) });
+                if (ticketService.FindTicket(manufacturer))
+                {
+                    return Ok(new { result = "ok", tickets = ticketService.FilterQuery(manufacturer, reporter) });
+                }
+                
             }
             else
             {

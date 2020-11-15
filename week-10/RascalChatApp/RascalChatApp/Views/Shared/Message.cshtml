@@ -1,5 +1,6 @@
 ﻿@using RascalChatApp.Models.ViewModels
-@model UserViewModel
+@model MessageViewModel
+
 
 @{
     Layout = "_Layout";
@@ -10,11 +11,22 @@
 </div>
 
 <div class="chat-container">
-    @using (Html.BeginForm("SendMsg", "Message", FormMethod.Post))
+    @using (Html.BeginForm("SendMessage", "Message", FormMethod.Post))
     {
         @Html.Hidden("channelId",1)
         @Html.Hidden("channelSecret", null)
         @Html.TextArea("content")
         <input type="submit" value="Send message" />
     }
+</div>
+<div class="message-container">
+    @if (string.IsNullOrEmpty(Model.Message.Content))
+    {
+    <p>You have no message</p>;
+    }
+    else
+    {
+    <p>@Model.Message.Author.UserName sent a new message: @Model.Message.Content</p>;
+    }
+
 </div>

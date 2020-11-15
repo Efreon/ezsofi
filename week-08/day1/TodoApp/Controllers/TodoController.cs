@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EntityFramework.Data;
 using EntityFramework.Model;
+using EntityFramework.Models;
 using EntityFramework.Models.Services;
 using EntityFramework.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -14,9 +15,11 @@ namespace EntityFramework.Controllers
     public class TodoController : Controller
     {
         private readonly ITodoServices service;
-        public TodoController(ITodoServices service)
+        private  ApplicationContext applicationContext;
+        public TodoController(ITodoServices service, ApplicationContext applicationContext)
         {
             this.service = service;
+            this.applicationContext = applicationContext;
         }
         [HttpGet("")]
         public IActionResult Index()
@@ -79,7 +82,7 @@ namespace EntityFramework.Controllers
         [HttpPost("{id}/edit")]
         public IActionResult Edit(ItemViewModel itemModel)
         {
-            service.Edit(itemModel.Todo.Id, itemModel.Todo.Title, itemModel.Todo.IsUrgent, itemModel.Todo.IsDone);
+            service.Edit(itemModel.Todo.Id, itemModel.Todo.Title, itemModel.Todo.IsUrgent, itemModel.Todo.IsDone, itemModel.Todo.Assignee);
             return RedirectToAction("Index");
         }
         [HttpPost("search")]
