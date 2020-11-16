@@ -1,4 +1,5 @@
-Simba;1700;lion;True;False
-Nala;15010;lion;False;False
+Simba;1800;lion;True;False
+Nala;15020;lion;False;False
 Timon;567;meerkat;False;True
 Scar;885;lion;False;False
+Pumba;145;warthog;False;True

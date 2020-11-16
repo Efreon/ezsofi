@@ -32,14 +32,28 @@
                 <tbody>
                     @for (int i = 0; i < accounts.Count; i++)
                     {
-                        <tr>
-                            <td> @(i+1)</td>
-                            <td> @accounts[i].Name</td>
-                            <td> @accounts[i].BalanceTwoDecimals</td>
-                            <td> @accounts[i].AnimalType</td>
-                            <td class="@accounts[i].IsKing==true ? "classKing":"classNoKing")"> @accounts[i].IsKing</td>
-                            <td> @accounts[i].IsGood</td>
-                        </tr>
+                    <tr>
+                        <td> @(i+1)</td>
+                        <td> @accounts[i].Name</td>
+                        <td> @accounts[i].BalanceTwoDecimals</td>
+                        <td> @accounts[i].AnimalType</td>
+                        @if (accounts[i].IsKing)
+                        {
+                            <td style="font-size:xx-large; color: darkgoldenrod">King</td>
+                        }
+                        else
+                        {
+                            <td style="font-size:smaller; color: beige">Not king</td>
+                        }
+                        @if (@accounts[i].IsGood)
+                        {
+                            <td style="font-size:xx-large; color: darkgoldenrod">Good</td>
+                        }
+                        else
+                        {
+                            <td style="font-size:smaller; color: beige">Bad</td>
+                        }
+                    </tr>
                     }
                 </tbody>
             </table>
