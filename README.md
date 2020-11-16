@@ -36,33 +36,17 @@
 [Day-3: ASP.NET Core MVC](https://github.com/green-fox-academy/ezsofi/tree/master/week-06/day-3)<br/>
 [Day-4&5: Basic Webshop App](https://github.com/green-fox-academy/ezsofi/tree/master/week-06/day-4_5/MyShop)<br/>
 
-##### Week-7
-###### Day-1
-###### Day-2
-###### Day-3
-###### Day-4
-###### Day-5
+##### Week-7<br/>
+[Day-1: Bank of Simba](https://github.com/green-fox-academy/ezsofi/tree/master/week-07/day1/BankOfSimbaApp)<br/>
 
 ##### Week-8
-###### Day-1
-###### Day-2
-###### Day-3
-###### Day-4
-###### Day-5
+
 
 ##### Week-9
-###### Day-1
-###### Day-2
-###### Day-3
-###### Day-4
-###### Day-5
+
 
 ##### Week-10
-###### Day-1
-###### Day-2
-###### Day-3
-###### Day-4
-###### Day-5
+
 
 ### Project Phase
 
