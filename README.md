@@ -38,15 +38,21 @@
 
 ##### Week-7<br/>
 [Day-1: Bank of Simba](https://github.com/green-fox-academy/ezsofi/tree/master/week-07/day1/BankOfSimbaApp)<br/>
+[Day-2: SQL](https://github.com/green-fox-academy/ezsofi/tree/master/week-07/day2/SQLWorkShop)<br/>
+[Day-3&4: Dependency Injection](https://github.com/green-fox-academy/ezsofi/tree/master/week-07/day3)<br/>
+[Day-5: Fox Club](https://github.com/green-fox-academy/ezsofi/tree/master/week-07/day5/FoxClubApplication)<br/>
 
-##### Week-8
+##### Week-8<br/>
+[Day-1](https://github.com/green-fox-academy/ezsofi/tree/master/week-08/day1)<br/>
+[RedditApp](https://github.com/green-fox-academy/ezsofi/tree/master/week-08/day4_5/RedditApp)<br/>
 
+##### Week-9<br/>
+[Day-1](https://github.com/green-fox-academy/ezsofi/tree/master/week-09/day1)<br/>
+[GFA - ErrorReporter App](https://github.com/green-fox-academy/ezsofi/tree/master/week-09/day5/ErrorReporterApp)<br/>
 
-##### Week-9
-
-
-##### Week-10
-
+##### Week-10<br/>
+[ChatApp](https://github.com/green-fox-academy/ezsofi/tree/master/week-10/RascalChatApp)<br/>
+[Orientation - Trial Exam](https://github.com/green-fox-academy/ezsofi/tree/master/week-10/OrientationSampleExam)<br/>
 
 ### Project Phase
 
